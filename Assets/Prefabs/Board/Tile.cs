@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
+using System.Linq;
+using System;
+using UnityEditor;
+using UnityEngine.Rendering.UI;
+
 
 public class Tile : MonoBehaviour
 {
-
-    public enum TileType
-    {
-        Empty,
-        Free,
-        House,
-        Park
-    }
 
     [SerializeField] List<Material> materials;
 
@@ -23,16 +21,6 @@ public class Tile : MonoBehaviour
     public TileType type = TileType.Empty;
 
     public Vector2 GetCoordinates() { return _coordinates; }
-
-
-    public void Select()
-    {
-
-    }
-    public void Unselect()
-    {
-
-    }
 
     void Start()
     {
@@ -50,7 +38,16 @@ public class Tile : MonoBehaviour
     public void Init(TileType t)
     {
         type = t;
-        gameObject.GetComponent<Renderer>().material = materials[(int)type];
+        if ((int)type >= 0)
+        {
+            if ((int) type >= materials.Count)
+                gameObject.GetComponent<Renderer>().material = materials[(int)type - 6];
+            else
+                gameObject.GetComponent<Renderer>().material = materials[(int)type];
+        }
+            
+        else
+            gameObject.GetComponent<Renderer>().material = null;
     }
 
     public void Activate()
