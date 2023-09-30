@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ca04eb225ec1b68489f25059c2573ab3, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5254902}
+  m_Sprite: {fileID: 21300000, guid: 00d069fbb31886d438ef2f304bc3b8d6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c193ce85fd652624d89789ea9f75842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sp: {fileID: 1231513418741380101}
   materials:
   - {fileID: 2100000, guid: 2694457efcf896b42894b47a8a5cdd2c, type: 2}
   - {fileID: 2100000, guid: 05f7381b711c562498ae94c2e93b123d, type: 2}
@@ -109,6 +110,23 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4b330565ac5e0a44ba2cfe656c809dc4, type: 2}
   - {fileID: 2100000, guid: 184e25b7dac051f44836722aa0585e4e, type: 2}
   - {fileID: 2100000, guid: e123080bcc7356048bd155293dba09fe, type: 2}
+  sprites:
+  - {fileID: 21300000, guid: 00d069fbb31886d438ef2f304bc3b8d6, type: 3}
+  - {fileID: 21300000, guid: 00d069fbb31886d438ef2f304bc3b8d6, type: 3}
+  - {fileID: 21300000, guid: 37510fa61e2fec34d98b945680b44c1f, type: 3}
+  - {fileID: 21300000, guid: ca04eb225ec1b68489f25059c2573ab3, type: 3}
+  - {fileID: 21300000, guid: a01e0c80153544940b9c34819aa3302e, type: 3}
+  - {fileID: 21300000, guid: 77a054a7cc10c2542acf7e1d69f5f40d, type: 3}
+  - {fileID: 21300000, guid: 5e085751d4d66ad4bbccff011d0781b1, type: 3}
+  - {fileID: 21300000, guid: 3ad89e4d1804ec041836d3adb75c02c5, type: 3}
+  - {fileID: 21300000, guid: 610ec305c8ec7b14486f5efc140fca39, type: 3}
+  - {fileID: 21300000, guid: 2632e97ae7a6efe4ba0391e384400cdb, type: 3}
+  - {fileID: 21300000, guid: 17a2cb8fe649b764aab3639c6e32bd8f, type: 3}
+  - {fileID: 21300000, guid: 54f4558fe4dc38b43b92bb84957a8159, type: 3}
+  - {fileID: 21300000, guid: 51559081c7c932f4280a52412d88e402, type: 3}
+  - {fileID: 21300000, guid: 5cfd39caf5aa8f643a06c50162cbc7b9, type: 3}
+  - {fileID: 21300000, guid: 17e0bd7e7e7722748a83b5bcfd52b432, type: 3}
+  - {fileID: 21300000, guid: 1b8189ea5eb46ab44bcc13da7bcdc230, type: 3}
   _coordinates: {x: 0, y: 0}
   type: 0
 --- !u!60 &2501941413431895752

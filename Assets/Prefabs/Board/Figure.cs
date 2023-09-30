@@ -85,7 +85,7 @@ public class Figure : MonoBehaviour
                 tile.Init((TileType)randomNum);
                 if (reverced)
                 {
-                    tile.type = (TileType)((int)tile.type + 6);
+                    tile.Init((TileType)((int)tile.type + 6));
                 }
             }
             else
@@ -125,7 +125,7 @@ public class Figure : MonoBehaviour
 
                 if (reverced)
                 {
-                    tile.type = (TileType)((int)tile.type + 6);
+                    tile.Init((TileType)((int)tile.type + 6));
                 }
             }
             else
