@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Cover
-    uniqueID: 1395631587
+  - name: Board
+    uniqueID: 3892111959
+    locked: 0
+  - name: Figure
+    uniqueID: 3016547979
     locked: 0
