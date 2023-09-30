@@ -5,6 +5,10 @@ using static Unity.Mathematics.math;
 using System.Linq;
 using Unity.VisualScripting;
 
+
+
+
+
 public class Figure : MonoBehaviour
 {
     BoardManager board;
@@ -23,6 +27,9 @@ public class Figure : MonoBehaviour
 
     [SerializeField] GameObject minitature;
 
+    [SerializeField] private int board_size = 1;
+    public Dictionary<Vector2, Tile> _grid = null;
+
     bool canMove;
     bool dragging;
 
@@ -39,45 +46,8 @@ public class Figure : MonoBehaviour
         }
     }
 
-    public void GenerateRandomBasic(int items = 4)
+    void PopulateWithHexes()
     {
-        List<Vector2> list = _grid.Keys.ToList();
-        Debug.Log(list);
-        list.Remove(new Vector2(0, 0));
-        Shuffle(list);
-        list.Add(new Vector2(0, 0));
-
-        foreach (var k in _grid.Keys)
-        {
-            Debug.Log(" " + k + ": " + _grid[k]);
-        }
-        for (int i = 0; i < list.Count; i++)
-        {
-            var tile = _grid[list[i]];
-            if (i > list.Count - items - 1)
-            {
-                int randomNum = Random.Range(2, 5);
-                tile.Init((TileType)randomNum);
-                if (reverced)
-                {
-                    tile.type = (TileType)((int)tile.type + 6);
-                }
-            }
-            else
-            {
-                tile.Init(TileType.Empty);
-            }
-        }    
-    }
-
-
-    [SerializeField] private int board_size = 1;
-    public Dictionary<Vector2, Tile> _grid;
-    // Start is called before the first frame update
-    void Start()
-    {
-        board = FindAnyObjectByType<BoardManager>();
-        coll = GetComponent<Collider2D>();
         _grid = new Dictionary<Vector2, Tile>();
         idle = transform.position;
         var offset_x = -board_size * x_v;
@@ -93,13 +63,115 @@ public class Figure : MonoBehaviour
                     tile.transform.position = tile.transform.parent.transform.position + offset_x + offset_y + x_v * i + y_v * j;
                     tile.Init(i - board_size, j - board_size, TileType.Empty);
                     tile.gameObject.GetComponent<Collider2D>().enabled = false;
-                    _grid[new Vector2(i - board_size, j - board_size)] = tile;                   
+                    _grid[new Vector2(i - board_size, j - board_size)] = tile;
+                }
+    }
+
+
+    public void GenerateRandomBasic(int items = 4)
+    {
+        if (_grid is null) PopulateWithHexes();
+        List<Vector2> list = _grid.Keys.ToList();
+        list.Remove(new Vector2(0, 0));
+        Shuffle(list);
+        list.Add(new Vector2(0, 0));
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            var tile = _grid[list[i]];
+            if (i > list.Count - items - 1)
+            {
+                int randomNum = Random.Range((int)TileType.House, (int)TileType.House + 3);
+                tile.Init((TileType)randomNum);
+                if (reverced)
+                {
+                    tile.type = (TileType)((int)tile.type + 6);
+                }
+            }
+            else
+            {
+                tile.Init(TileType.Empty);
+            }
+        }    
+    }
+
+
+    public void GenerateRandomBasic(int items = 4, int h = 1, int p = 1, int u = 1)
+    {
+        float house = (float)h/ (float)(h + p + u);
+        float util = 1.0f - (float)u / (float)(h + p + u);
+        if (_grid is null) PopulateWithHexes();
+        List<Vector2> list = _grid.Keys.ToList();
+        list.Remove(new Vector2(0, 0));
+        Shuffle(list);
+        list.Add(new Vector2(0, 0));
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            var tile = _grid[list[i]];
+            if (i > list.Count - items - 1)
+            {
+                float randomNum = Random.Range(0.0f, 1.0f);
+                if (randomNum < house)
+                {
+                    tile.Init(TileType.House);
+                } else if (randomNum > util)
+                {
+                    tile.Init(TileType.Utility);
+                } else
+                {
+                    tile.Init(TileType.Park);
                 }
 
-        if (!reverced) 
-            GenerateRandomBasic(Random.Range(2, 5));
-        else
-            GenerateRandomBasic(Random.Range(4, 8));
+                if (reverced)
+                {
+                    tile.type = (TileType)((int)tile.type + 6);
+                }
+            }
+            else
+            {
+                tile.Init(TileType.Empty);
+            }
+        }
+    }
+
+
+    public void GenerateBomb(int items = 1)
+    {
+        if (_grid is null) PopulateWithHexes();
+        List<Vector2> list = _grid.Keys.ToList();
+        list.Remove(new Vector2(0, 0));
+        Shuffle(list);
+        list.Add(new Vector2(0, 0));
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            var tile = _grid[list[i]];
+            if (i > list.Count - items - 1)
+            {
+                tile.Init(TileType.Bomb);
+            }
+            else
+            {
+                tile.Init(TileType.Empty);
+            }
+        }
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        board = FindAnyObjectByType<BoardManager>();
+        coll = GetComponent<Collider2D>();
+
+        idle = transform.position;
+
+        if (_grid is null)
+            if (!reverced) 
+                GenerateRandomBasic(Random.Range(1, 4));
+            else
+                GenerateRandomBasic(Random.Range(3, 7));
 
         rotation.Add(new Vector2(0, 1));
         rotation.Add(new Vector2(1, 1));
@@ -137,7 +209,7 @@ public class Figure : MonoBehaviour
             if (canMove) { dragging = true; }
         }
 
-        if (Input.GetMouseButtonDown(1) && canMove)
+        if (Input.GetMouseButtonDown(1) && (coll == Physics2D.OverlapPoint(mousePos) || canMove))
         {
             Tile boof = _grid[rotation[0]];
 
@@ -160,6 +232,8 @@ public class Figure : MonoBehaviour
             _grid[rotation[5]] = boof;
             _grid[rotation[5]].transform.position = pos;
             _grid[rotation[5]]._coordinates = coords;
+
+            minitature.GetComponent<Miniature>().UpdateGrid();
         }
 
         if (dragging)

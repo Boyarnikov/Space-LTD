@@ -33,6 +33,7 @@ public class Miniature : MonoBehaviour
                 if (abs(i - j) <= board_size)
                 {
                     var tile = Instantiate(cell, Vector3.zero, Quaternion.identity);
+                    tile.GetComponent<SpriteRenderer>().sortingLayerName = "Figure";
                     tile.name = $"Tile {i - board_size} {j - board_size}";
                     tile.transform.parent = this.transform;
                     tile.transform.position = tile.transform.parent.transform.position + offset_x + offset_y + x_v * i + y_v * j;

@@ -11,6 +11,8 @@ public enum TileType
     None = -1,
     Empty,
     Free,
+    Bomb,
+    Trash,
     House,
     Park,
     Utility,
@@ -26,6 +28,13 @@ public enum TileType
 }
 
 
+public static class TileConsts
+{
+    public const int buildingsOffset = 4;
+    public const int buildingsCount = 6;
+} 
+
+
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
@@ -38,6 +47,9 @@ public class BoardManager : MonoBehaviour
     private Dictionary<Vector2, Tile> _grid;
 
     public Conveyor conv;
+    public TaskManager tasks;
+
+    List<Recepy> recepies = new List<Recepy>();
 
     void Awake()
     {
@@ -55,11 +67,15 @@ public class BoardManager : MonoBehaviour
             {
                 Tuple<TileType, TileType> key = new Tuple<TileType, TileType>(t1, t2);
                 Conversions[key] = TileType.None;
-                if (t1 == TileType.Free && t2 != TileType.None && (int)t2 < 8)
+                if (t1 == TileType.Free && t2 != TileType.None && (int)t2 < TileConsts.buildingsOffset + TileConsts.buildingsCount && t2 >= TileType.Trash)
                 {
                     Conversions[new Tuple<TileType, TileType>(t1, t2)] = t2;
                 }
-                if ((int)t1 + 6 == (int)t2 && (int)t2 >= 8)
+                if ((int)t1 + TileConsts.buildingsCount == (int)t2 && (int)t2 >= TileConsts.buildingsOffset + TileConsts.buildingsCount)
+                {
+                    Conversions[new Tuple<TileType, TileType>(t1, t2)] = TileType.Free;
+                }
+                if (((int)t1 >= (int)TileType.Trash || t1 == TileType.Free) && t2 == TileType.Bomb)
                 {
                     Conversions[new Tuple<TileType, TileType>(t1, t2)] = TileType.Free;
                 }
@@ -113,6 +129,11 @@ public class BoardManager : MonoBehaviour
     void Start()
     {
         conv = FindAnyObjectByType<Conveyor>();
+        tasks = FindAnyObjectByType<TaskManager>();
+
+        recepies = FindObjectsOfType<Recepy>().ToList();
+        Debug.Log(recepies.Count);
+
         GenerateGrid();
         GenerateConversions();
     }
@@ -173,13 +194,36 @@ public class BoardManager : MonoBehaviour
                         _grid[key + ind].Init(Conversions[conv_key]);
                     }
                 }
+
+                foreach (var r in recepies)
+                {
+                    for (int i = 0; i < r.queue.Count; i++)
+                    {
+                        if (r.queue[i].gameObject.GetInstanceID() == f.gameObject.GetInstanceID())
+                        {
+                            r.TaskDone();
+                            r.queue[i] = null;
+                        }
+                    }
+                    r.UpdateQueue();
+
+                }
+
                 for (int i = 0; i < conv.figureList.Count; i++) 
                 {
                     if (conv.figureList[i].gameObject.GetInstanceID() == f.gameObject.GetInstanceID())
                         conv.figureList[i] = null;
 
                 }
+
+                for (int i = 0; i < tasks.queue.Count; i++)
+                {
+                    if (tasks.queue[i].gameObject.GetInstanceID() == f.gameObject.GetInstanceID())
+                        tasks.queue[i] = null;
+                }
+
                 conv.UpdateConveyor();
+                tasks.UpdateQueue();
                 Destroy(f.gameObject);
             }
         }
