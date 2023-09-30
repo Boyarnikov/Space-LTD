@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3408064427
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -47,4 +50,19 @@ TagManager:
     locked: 0
   - name: Figure
     uniqueID: 3016547979
+    locked: 0
+  - name: FigureInterface
+    uniqueID: 1276949375
+    locked: 0
+  - name: FigureFront
+    uniqueID: 4053610553
+    locked: 0
+  - name: Interface
+    uniqueID: 3981725263
+    locked: 0
+  - name: Cover
+    uniqueID: 1910342695
+    locked: 0
+  - name: FrontInterface
+    uniqueID: 885553533
     locked: 0
