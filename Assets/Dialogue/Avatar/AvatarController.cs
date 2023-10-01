@@ -19,9 +19,12 @@ public class AvatarController : MonoBehaviour
         float h = sprite_size.y / sprite_renderer.sprite.pixelsPerUnit;
         float cam_w = Camera.main.orthographicSize * Camera.main.aspect;
         float cam_h = Camera.main.orthographicSize;
+        float cam_x = Camera.main.transform.position.x;
+        float cam_y = Camera.main.transform.position.y;
+
         positions.Add(new Vector2(0, 0));
-        positions.Add(new Vector2(cam_w - w / 2 * transform.localScale.x - 0.5f, - cam_h + h / 2 * transform.localScale.y - 0.2f));
-        positions.Add(new Vector2(- cam_w + w / 2 * transform.localScale.x + 0.5f, - cam_h + h / 2 * transform.localScale.y - 0.2f));
+        positions.Add(new Vector2(cam_w - w / 2 * transform.localScale.x - 0.5f + cam_x, - cam_h + h / 2 * transform.localScale.y - 0.2f + cam_y));
+        positions.Add(new Vector2(- cam_w + w / 2 * transform.localScale.x + 0.5f + cam_x, - cam_h + h / 2 * transform.localScale.y - 0.2f + cam_y));
     }
 
     public void Enable() {
