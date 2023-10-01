@@ -18,7 +18,7 @@ public class Recepy : MonoBehaviour
         {
             queue.Add(Instantiate(fig));
             queue[i].reverced = true;
-            queue[i].GenerateRandomBasic(Random.Range(3, 6));
+            queue[i].GenerateRandomBasic(Random.Range(3, 4));
             queue[i].transform.parent = this.transform;
         }
     }

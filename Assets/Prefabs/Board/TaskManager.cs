@@ -5,6 +5,7 @@ using static UnityEditor.Progress;
 
 public class TaskManager : MonoBehaviour
 {
+    [SerializeField] public CounterUI cui;
     [SerializeField] public List<Vector3> positions = new List<Vector3>();
     [SerializeField] public int queueSize = 10;
     [SerializeField] public List<Figure> queue = new List<Figure>();
@@ -37,6 +38,11 @@ public class TaskManager : MonoBehaviour
                 queue[i].transform.position = new Vector3(200, 0, 0);
             }
             queue[i].idle = queue[i].transform.position;
+        }
+
+        if (cui is not null)
+        {
+            cui.UpdateCounter(queue.Count - 4);
         }
     }
 
