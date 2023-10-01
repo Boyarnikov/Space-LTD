@@ -1381,6 +1381,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5375344089768291777, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375344089768291777, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -402855337
+      objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: type
       value: 4
@@ -1392,6 +1400,10 @@ PrefabInstance:
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: minFigSize
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360770983615011701, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1673,6 +1685,5 @@ SceneRoots:
   - {fileID: 5710410267930852483}
   - {fileID: 1899345751779118120}
   - {fileID: 1679324715}
-
   - {fileID: 1909539953}
-
+  - {fileID: 782781528}

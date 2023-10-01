@@ -1154,6 +1154,22 @@ PrefabInstance:
       propertyPath: minFigSizeOut
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c69baf33955cce49ae5e0311038ee24, type: 2}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c69baf33955cce49ae5e0311038ee24, type: 2}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c69baf33955cce49ae5e0311038ee24, type: 2}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c69baf33955cce49ae5e0311038ee24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1299,6 +1315,5 @@ SceneRoots:
   - {fileID: 5710410267930852483}
   - {fileID: 1899345751779118120}
   - {fileID: 1679324715}
-
   - {fileID: 49234672}
-
+  - {fileID: 197438043}

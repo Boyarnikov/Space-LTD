@@ -43,7 +43,7 @@ public class Conveyor : MonoBehaviour
         float cam_h = Camera.main.orthographicSize;
         float cam_x = Camera.main.transform.position.x;
         float cam_y = Camera.main.transform.position.y;
-        transform.position = new Vector2(w / 2 + offset.x / 2 + cam_x, cam_h - h / 2 + cam_y - 0.2f);
+        transform.position = new Vector2(w / 2 + offset.x / 2 + cam_x, cam_h - h / 2 + cam_y - 0.2f + 0.2f);
         target.Settings(new Vector2(0.25f, 0.25f));
         counter.target.Settings(new Vector2(0.25f, 0.25f));
 
