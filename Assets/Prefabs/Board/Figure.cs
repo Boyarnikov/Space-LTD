@@ -48,6 +48,19 @@ public class Figure : MonoBehaviour
         }
     }
 
+    void Shuffle(List<TileType> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n);
+            TileType value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
     void PopulateWithHexes()
     {
         _grid = new Dictionary<Vector2, Tile>();
@@ -98,6 +111,21 @@ public class Figure : MonoBehaviour
     }
 
 
+    public Dictionary<TileType, int> GetTileTypes()
+    {
+        Dictionary<TileType, int> d = new Dictionary<TileType, int>();
+        foreach (var tile in _grid.Values)
+        {
+            if (!d.Keys.Contains(tile.type))
+            {
+                d[tile.type] = 0;
+            }
+            d[tile.type] += 1;
+        }
+        return d;
+    }
+
+
     public void GenerateRandomBasic(int items = 4, int h = 1, int p = 1, int u = 1)
     {
         float house = (float)h/ (float)(h + p + u);
@@ -137,6 +165,48 @@ public class Figure : MonoBehaviour
         }
     }
 
+
+
+    public void GenerateRandomBasic(Dictionary<TileType, int> d)
+    {
+        if (_grid is null) PopulateWithHexes();
+
+        List<TileType> types = new List<TileType>();
+
+        foreach (var key in d.Keys)
+        {
+            for (int i = 0;i < d[key]; i++) 
+            {
+                types.Add(key);
+            }
+        }
+        int items = types.Count;
+        if (items > 7) { items = 7; }
+        Shuffle(types);
+
+        List<Vector2> list = _grid.Keys.ToList();
+        list.Remove(new Vector2(0, 0));
+        Shuffle(list);
+        list.Add(new Vector2(0, 0));
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            var tile = _grid[list[i]];
+            if (i > list.Count - items - 1)
+            {
+                tile.Init(types[-list.Count + items + i]);
+
+                if (reverced && ((int)tile.type) >= ((int)TileType.House) && ((int)tile.type) < ((int)TileType.Need_House))
+                {
+                    tile.Init((TileType)((int)tile.type + 6));
+                }
+            }
+            else
+            {
+                tile.Init(TileType.Empty);
+            }
+        }
+    }
 
     public void GenerateBomb(int items = 1)
     {
