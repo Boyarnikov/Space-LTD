@@ -132,7 +132,6 @@ public class BoardManager : MonoBehaviour
         tasks = FindAnyObjectByType<TaskManager>();
 
         recepies = FindObjectsOfType<Recepy>().ToList();
-        Debug.Log(recepies.Count);
 
         GenerateGrid();
         GenerateConversions();

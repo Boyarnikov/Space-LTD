@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Mathematics.math;
 using System.Linq;
+using UnityEngine.UIElements;
 
 public class Miniature : MonoBehaviour
 {
@@ -54,6 +55,28 @@ public class Miniature : MonoBehaviour
         {
             if (_grid.ContainsKey(key) && _update.ContainsKey(key))
                 _grid[key].Init(_update[key].type);
+        }
+    }
+
+    public void UpdateMove(Vector3 from, Vector3 to)
+    {
+        transform.position = from;
+        idle = to;
+    }
+
+    void Update()
+    {
+        float m = (transform.position - idle).magnitude;
+        if (m > 2.0f) 
+        { 
+            transform.position = transform.position * 0.99f + idle * 0.01f; 
+        }
+        else
+        if (m > 8.0f * Time.deltaTime) {
+            transform.position -= (transform.position - idle) / m * 16.0f * Time.deltaTime;
+        } else
+        {
+            transform.position = idle;
         }
     }
 }

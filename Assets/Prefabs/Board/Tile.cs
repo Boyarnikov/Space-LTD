@@ -11,7 +11,10 @@ using UnityEngine.Rendering.UI;
 public class Tile : MonoBehaviour
 {
 
+    [SerializeField] SpriteRenderer sp;
+
     [SerializeField] List<Material> materials;
+    [SerializeField] List<Sprite> sprites;
 
     GameObject cam;
     BoardManager grid;
@@ -31,46 +34,35 @@ public class Tile : MonoBehaviour
     public void Init(int pos_x, int pos_y, TileType t)
     {
         _coordinates = new Vector2(pos_x, pos_y);
-        type = t;
-        gameObject.GetComponent<Renderer>().material = materials[(int)type];
+        Init(t);
     }
 
     public void Init(TileType t)
     {
         type = t;
-        if ((int)type >= 0)
+
+        if ((int)type < sprites.Count && (int)type != 0)
         {
-            if ((int) type >= materials.Count)
-                gameObject.GetComponent<Renderer>().material = materials[(int)type - 6];
-            else
-                gameObject.GetComponent<Renderer>().material = materials[(int)type];
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[(int)type];
+            gameObject.GetComponent<Renderer>().material = materials[1];
         }
-            
-        else
-            gameObject.GetComponent<Renderer>().material = null;
-    }
+        else { 
+        if ((int)type >= 0)
+            {
+                if ((int) type >= materials.Count)
+                    gameObject.GetComponent<Renderer>().material = materials[(int)type - 6];
+                else
+                    gameObject.GetComponent<Renderer>().material = materials[(int)type];
+            }  
+            else
+                gameObject.GetComponent<Renderer>().material = null;
 
-    public void Activate()
-    {
+        }
 
-    }
-
-    public void Deactivate()
-    {
-    }
-
-    void UpdateRenderer()
-    {
-       
-    }
-
-    void CalculateLerp()
-    {
-       
     }
 
     void Update()
     {
-
+        sp.sortingOrder =  (int)(- transform.position.y * 10);
     }
 }

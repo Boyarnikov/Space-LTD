@@ -19,6 +19,8 @@ public class Figure : MonoBehaviour
 
     [SerializeField] public bool reverced;
 
+    Vector3 lastTransform = Vector3.zero;
+
     List<Vector2> rotation = new List<Vector2>();
 
     [SerializeField] public Tile cell;
@@ -85,7 +87,7 @@ public class Figure : MonoBehaviour
                 tile.Init((TileType)randomNum);
                 if (reverced)
                 {
-                    tile.type = (TileType)((int)tile.type + 6);
+                    tile.Init((TileType)((int)tile.type + 6));
                 }
             }
             else
@@ -125,7 +127,7 @@ public class Figure : MonoBehaviour
 
                 if (reverced)
                 {
-                    tile.type = (TileType)((int)tile.type + 6);
+                    tile.Init((TileType)((int)tile.type + 6));
                 }
             }
             else
@@ -162,6 +164,7 @@ public class Figure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastTransform = transform.position;
         board = FindAnyObjectByType<BoardManager>();
         coll = GetComponent<Collider2D>();
 
@@ -192,6 +195,12 @@ public class Figure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lastTransform != transform.position) {
+            minitature.GetComponent<Miniature>().UpdateMove(lastTransform, transform.position);
+        }
+        lastTransform = transform.position;
+
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))

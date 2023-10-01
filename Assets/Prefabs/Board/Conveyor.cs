@@ -13,6 +13,7 @@ public enum ConveyorType
 
 public class Conveyor : MonoBehaviour
 {
+    [SerializeField] public CounterUI cui;
     [SerializeField] Vector3 offset = new Vector3 (-1f, 0, 0);
     [SerializeField] Figure figure;
     [SerializeField] int maxSize = 5;
@@ -40,7 +41,6 @@ public class Conveyor : MonoBehaviour
                 {
                     figureList.Add(queue[0]);
                     queue.RemoveAt(0);
-                    Debug.Log("BOMB CREATED");
                 } 
                 else
                     figureList.Add(Instantiate(figure));
@@ -52,6 +52,11 @@ public class Conveyor : MonoBehaviour
             figureList[i].transform.parent = this.transform;
             figureList[i].gameObject.transform.position = offset * i + transform.position;
             figureList[i].idle = offset * i + transform.position;
+        }
+
+        if (cui is not null)
+        {
+            cui.UpdateCounter(queue.Count);
         }
     }
 
