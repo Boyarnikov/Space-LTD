@@ -10,7 +10,7 @@ public class DialogueDispellerTarget : MonoBehaviour
     [SerializeField] GameObject frame;
     void Start()
     {
-        Settings(new Vector2(0, 0));
+
     }
 
     public void Settings(Vector2 gap) {

@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite_behaviour: {fileID: 6037586694349735846}
-  cover_alpha: 0.5
+  cover_alpha: 0.8
   dispeller_prefab: {fileID: 3923782115492297812, guid: 70cca8d043f619a42a4f2a518c581f2f, type: 3}
   dispeller_target_position: {x: 0, y: 0}
   dispeller_target_size: {x: 0, y: 0}
