@@ -9,6 +9,7 @@ public class LevelButton : MonoBehaviour
     [SerializeField] string SceneName;
     [SerializeField] public Sprite Lit;
     [SerializeField] public Sprite Unlit;
+    public int count;
     public bool lit = false;
 
     Collider2D coll;
@@ -21,7 +22,7 @@ public class LevelButton : MonoBehaviour
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && (count < Globals.levelsUnlocked))
         {
             if (coll == Physics2D.OverlapPoint(mousePos))
             {
