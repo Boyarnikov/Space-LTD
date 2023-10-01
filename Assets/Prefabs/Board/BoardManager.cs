@@ -39,6 +39,7 @@ public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
 
+    [SerializeField] public bool trashed;
     [SerializeField] public Tile cell;
     [SerializeField] private Vector3 x_v = new Vector3(0.866f, -0.5f, 0);
     [SerializeField] private Vector3 y_v = new Vector3(0, 1.0f, 0);
@@ -83,6 +84,19 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    void Shuffle(List<Tile> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = UnityEngine.Random.Range(0, n);
+            Tile value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
     public void GenerateGrid()
     {
         _grid = new Dictionary<Vector2, Tile>();
@@ -100,6 +114,16 @@ public class BoardManager : MonoBehaviour
                     tile.Init(i - board_size, j - board_size, TileType.Free);
                     _grid[new Vector2(i - board_size, j - board_size)] = tile;
                 }
+
+        if (trashed)
+        {
+            List<Tile> l = _grid.Values.ToList();
+            Shuffle(l);
+            for (int i  = 0; i < 6; i++)
+            {
+                l[i].Init(TileType.Trash);
+            }
+        }
     }
 
     public List<Tile> GetAllTiles()
@@ -170,14 +194,14 @@ public class BoardManager : MonoBehaviour
                     is_placable &= (Conversions[conv_key] != TileType.None);
                     if (Conversions[conv_key] == TileType.None)
                     {
-                        Debug.Log("cannot convert " + (int)t1 + " to " + (int)t2);
+                        //Debug.Log("cannot convert " + (int)t1 + " to " + (int)t2);
                     }
                     //_grid[key + ind].Init(f._grid[key].type);
                 }
                 else if (f._grid[key].type != TileType.Empty)
                 {
                     is_placable = false;
-                    Debug.Log("not placable at l");
+                    //Debug.Log("not placable at l");
                 }
             }
 

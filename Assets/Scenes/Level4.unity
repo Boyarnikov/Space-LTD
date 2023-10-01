@@ -282,6 +282,22 @@ PrefabInstance:
       propertyPath: frame
       value: 
       objectReference: {fileID: 1249347030}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeIn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeOut
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -884,6 +900,22 @@ PrefabInstance:
       propertyPath: frame
       value: 
       objectReference: {fileID: 1249347030}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeIn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeOut
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -957,6 +989,18 @@ PrefabInstance:
       propertyPath: frame
       value: 
       objectReference: {fileID: 1249347030}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeIn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeOut
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1180,6 +1224,10 @@ PrefabInstance:
       propertyPath: frame
       value: 
       objectReference: {fileID: 1249347030}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: typeOut
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
