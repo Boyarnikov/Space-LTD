@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+
 --- !u!1001 &504010034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +221,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e5f617dab653240ad182430078e42b, type: 3}
+
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +500,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8867924, g: 0.6117647, b: 0.6117647, a: 0.08627451}
+  m_Color: {r: 0.8867924, g: 0.6117647, b: 0.6117647, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1024,4 +1026,6 @@ SceneRoots:
   - {fileID: 5710410267930852483}
   - {fileID: 1899345751779118120}
   - {fileID: 1679324715}
+
   - {fileID: 504010034}
+

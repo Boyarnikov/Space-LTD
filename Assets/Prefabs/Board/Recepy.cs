@@ -150,12 +150,9 @@ public class Recepy : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("create recepy");
         conv = FindAnyObjectByType<Conveyor>();
         PopulateQueue();
-        Debug.Log("populated");
         UpdateQueue();
-        Debug.Log("updated");
 
 
         switch (typeOut)

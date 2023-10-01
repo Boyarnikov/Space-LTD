@@ -115,6 +115,8 @@ public class BoardManager : MonoBehaviour
                     tile.transform.parent = this.transform;
                     tile.transform.position = offset_x + offset_y + x_v * i + y_v * j;
                     tile.Init(i - board_size, j - board_size, TileType.Free);
+                    tile.moveToIdle = true;
+                    tile.idle = tile.transform.position;
                     _grid[new Vector2(i - board_size, j - board_size)] = tile;
                 }
 
@@ -221,6 +223,7 @@ public class BoardManager : MonoBehaviour
                         TileType t1 = _grid[key + ind].type;
                         TileType t2 = f._grid[key].type;
                         Tuple<TileType, TileType> conv_key = new Tuple<TileType, TileType>(t1, t2);
+                        _grid[key + ind].transform.position += Vector3.down * 0.05f;
                         _grid[key + ind].Init(Conversions[conv_key]);
                     }
                 }
