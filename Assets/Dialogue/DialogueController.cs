@@ -97,6 +97,13 @@ public class Dialogue
         phrases = _phrases;
     }
 
+    public Dialogue(ref Phrase[] _phrases, Func<float> _hook)
+    {
+        place = -1;
+        phrases = _phrases;
+        hook = _hook;
+    }
+
     public Phrase Next()
     {
         place++;
@@ -151,7 +158,7 @@ public class DialogueController : MonoBehaviour
     // 7 - 3й рецепт
     // 8 - 4й рецепт
 
-    public Dialogue InitDialogs0()
+    public Dialogue InitDialogs0(Func<float> hook)
     {
         string[] text = {
             "вы инженер стройте блоки чтобы отправлять их в колонии",
@@ -167,10 +174,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[2].position , targets[2].scale)),
             new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[2].position , targets[2].scale)),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs1()
+    public Dialogue InitDialogs1(Func<float> hook)
     {
         string[] text = {
             "сё кайфово ня",
@@ -184,10 +191,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs2()
+    public Dialogue InitDialogs2(Func<float> hook)
     {
         string[] text = {
             "эти кружочки показывают сколько у вас заданий в запасе",
@@ -199,10 +206,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs3()
+    public Dialogue InitDialogs3(Func<float> hook)
     {
         string[] text = {
             "отличная работа!",
@@ -212,10 +219,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs4()
+    public Dialogue InitDialogs4(Func<float> hook)
     {
         string[] text = {
             "ух, как хорошо получить ангар по-больше",
@@ -231,10 +238,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position, new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs5()
+    public Dialogue InitDialogs5(Func<float> hook)
     {
         string[] text = {
             "Экология очень важна блаблабла",
@@ -242,10 +249,10 @@ public class DialogueController : MonoBehaviour
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs6()
+    public Dialogue InitDialogs6(Func<float> hook)
     {
         string[] text = {
             "Колониям так же нужны батареи и прочие ютилити чтобы выживать",
@@ -255,10 +262,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs7()
+    public Dialogue InitDialogs7(Func<float> hook)
     {
         string[] text = {
             "заказы модулей всегда ориентируются на неровную местность марса",
@@ -274,10 +281,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position, new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs8()
+    public Dialogue InitDialogs8(Func<float> hook)
     {
         string[] text = {
             "когда вы выполняете спецзаказ - тайлы оказываются в очереди конвеера",
@@ -287,10 +294,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs9()
+    public Dialogue InitDialogs9(Func<float> hook)
     {
         string[] text = {
             "после вчерашней песчаной бури у нас серьёзные поломки в модулях",
@@ -300,10 +307,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs10()
+    public Dialogue InitDialogs10(Func<float> hook)
     {
         string[] text = {
             "некоторые станции требуют более продвинутые и требуют более крутых зданий",
@@ -317,10 +324,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[5].position , targets[5].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs11()
+    public Dialogue InitDialogs11(Func<float> hook)
     {
         string[] text = {
             "надеюсь нам дадут пожить в этих крутых отелях)))",
@@ -328,10 +335,10 @@ public class DialogueController : MonoBehaviour
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs12()
+    public Dialogue InitDialogs12(Func<float> hook)
     {
         string[] text = {
             "Для полноценной работы большим колониям нужны ещё здания",
@@ -347,9 +354,9 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[1].position , targets[1].scale)),
             new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[8].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
-    public Dialogue InitDialogs13()
+    public Dialogue InitDialogs13(Func<float> hook)
     {
         string[] text = {
             "с таким количеством построек ангар и конвеер могут быстро переполниться",
@@ -363,10 +370,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs14()
+    public Dialogue InitDialogs14(Func<float> hook)
     {
         string[] text = {
             "хух, это был последний заказ, кажется всё",
@@ -380,10 +387,10 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue InitDialogs15()
+    public Dialogue InitDialogs15(Func<float> hook)
     {
         string[] text = {
             "хух, это был последний заказ, кажется всё",
@@ -397,28 +404,28 @@ public class DialogueController : MonoBehaviour
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , new Vector2(0, 0))),
         };
-        return new Dialogue(ref phrases);
+        return new Dialogue(ref phrases, hook);
     }
 
-    public Dialogue GetDialogue(int number)
+    public Dialogue GetDialogue(int number, Func<float> hook)
     {
-        if (number == 0) return InitDialogs0();
-        if (number == 1) return InitDialogs1();
-        if (number == 2) return InitDialogs2();
-        if (number == 3) return InitDialogs3();
-        if (number == 4) return InitDialogs4();
-        if (number == 5) return InitDialogs5();
-        if (number == 6) return InitDialogs6();
-        if (number == 7) return InitDialogs7();
-        if (number == 8) return InitDialogs8();
-        if (number == 9) return InitDialogs9();
-        if (number == 10) return InitDialogs10();
-        if (number == 11) return InitDialogs11();
-        if (number == 12) return InitDialogs12();
-        if (number == 13) return InitDialogs13();
-        if (number == 14) return InitDialogs14();
-        if (number == 15) return InitDialogs15();
-        return InitDialogs0();
+        if (number == 0) return InitDialogs0(hook);
+        if (number == 1) return InitDialogs1(hook);
+        if (number == 2) return InitDialogs2(hook);
+        if (number == 3) return InitDialogs3(hook);
+        if (number == 4) return InitDialogs4(hook);
+        if (number == 5) return InitDialogs5(hook);
+        if (number == 6) return InitDialogs6(hook);
+        if (number == 7) return InitDialogs7(hook);
+        if (number == 8) return InitDialogs8(hook);
+        if (number == 9) return InitDialogs9(hook);
+        if (number == 10) return InitDialogs10(hook);
+        if (number == 11) return InitDialogs11(hook);
+        if (number == 12) return InitDialogs12(hook);
+        if (number == 13) return InitDialogs13(hook);
+        if (number == 14) return InitDialogs14(hook);
+        if (number == 15) return InitDialogs15(hook);
+        return InitDialogs0(hook);
     }
 
     public void InitCover()
@@ -441,11 +448,11 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void SelectDialogue(int dialogue_number)
+    public void SelectDialogue(int dialogue_number, Func<float> hook)
     {
         if (in_dialogue == false)
         {
-            selected_dialogue = GetDialogue(dialogue_number);
+            selected_dialogue = GetDialogue(dialogue_number, hook);
             cover_controller.OpenCover(() => {
                 RenderNext();
                 in_dialogue = true;
@@ -463,7 +470,7 @@ public class DialogueController : MonoBehaviour
     public void CloseDialogue()
     {
         in_dialogue = false;
-        cover_controller.CloseCover(() => { return 0; });
+        cover_controller.CloseCover(selected_dialogue.hook);
         for (int i = 0; i < actors_controllers.Count; i++)
         {
             actors_controllers[i].SetInactive();
@@ -523,9 +530,11 @@ public class DialogueController : MonoBehaviour
         {
             CloseDialogue();
         }
+        /*
         if (Input.GetKeyDown(KeyCode.V))
         {
-            SelectDialogue(dialog_number);
+            SelectDialogue(dialog_number, () => { return 0; });
         }
+        */
     }
 }

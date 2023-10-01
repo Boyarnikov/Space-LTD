@@ -66,11 +66,13 @@ public class CoverController : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetKeyDown("space"))
         {
             if (open) CloseCover(() => { return 0; });
             else OpenCover(() => { return 0; });
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.M))
         {
