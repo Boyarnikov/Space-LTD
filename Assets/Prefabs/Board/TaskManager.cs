@@ -2,8 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TaskType
+{
+    MonoColor,
+    HousePark,
+    ThreeColor,
+    Hotel,
+    All
+}
+
 public class TaskManager : MonoBehaviour
 {
+    [SerializeField] public TaskType type;
+    [SerializeField] public int minFigSize;
+    [SerializeField] public int maxFigSize;
+
     [SerializeField] public CounterUI cui;
     [SerializeField] public List<Vector3> positions = new List<Vector3>();
     [SerializeField] public int queueSize = 10;
@@ -16,11 +29,68 @@ public class TaskManager : MonoBehaviour
         queue = new List<Figure>();
         for (int i = 0; i < queueSize; i++)
         {
-            queue.Add(Instantiate(fig, transform));
-            queue[i].reverced = true;
-            queue[i].GenerateRandomBasic(Random.Range(3, 6));
+            var f = CreateFigure();
+            queue.Add(f);
         }
     }
+
+
+    Figure CreateFigure()
+    {
+        var f = Instantiate(fig);
+        f.reverced = true;
+        Dictionary<TileType, int> d = new Dictionary<TileType, int>();
+        int count = UnityEngine.Random.Range(minFigSize, maxFigSize + 1);
+        switch (type)
+        {
+            case TaskType.MonoColor:
+                f.GenerateRandomBasic(UnityEngine.Random.Range(minFigSize, maxFigSize + 1), 1, 0, 0);
+                break;
+            case TaskType.HousePark:
+                f.GenerateRandomBasic(UnityEngine.Random.Range(minFigSize, maxFigSize + 1), 1, 1, 0);
+                break;
+            case TaskType.ThreeColor:
+                f.GenerateRandomBasic(UnityEngine.Random.Range(minFigSize, maxFigSize + 1));
+                break;
+            case TaskType.Hotel:
+                d[TileType.Hotel] = UnityEngine.Random.Range(0, 2);
+                d[TileType.House] = 0;
+                d[TileType.Park] = 0;
+                for (int i = 0; i < count - d[TileType.Hotel]; i++)
+                {
+                    if (UnityEngine.Random.Range(0f, 1f) > 0.5)
+                    {
+                        d[TileType.House] += 1;
+                    }
+                    else
+                    {
+                        d[TileType.Park] += 1;
+                    }
+                }
+                f.GenerateRandomBasic(d);
+                break;
+            case TaskType.All:
+                int super = 0;
+                if (UnityEngine.Random.Range(0, 2) == 1)
+                {
+                    super = 1;
+                    d[(UnityEngine.Random.Range(0f, 1f) > 0.33f) ? TileType.Hotel : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Lab : TileType.Farm] += 1;
+                }
+                d[TileType.Hotel] = UnityEngine.Random.Range(0, 2);
+                d[TileType.House] = 0;
+                d[TileType.Park] = 0;
+                d[TileType.Utility] = 0;
+                for (int i = 0; i < count - super; i++)
+                {
+                    d[(UnityEngine.Random.Range(0f, 1f) > 0.33f) ? TileType.Utility : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Park : TileType.House] += 1;
+                }
+                f.GenerateRandomBasic(d);
+                break;
+        }
+
+        return f;
+    }
+
 
     public void UpdateQueue()
     {

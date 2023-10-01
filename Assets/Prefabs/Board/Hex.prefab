@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894093864659262112}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1231513418741380101
 SpriteRenderer:
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 5.5, y: 5.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -113,20 +113,20 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 00d069fbb31886d438ef2f304bc3b8d6, type: 3}
   - {fileID: 21300000, guid: 00d069fbb31886d438ef2f304bc3b8d6, type: 3}
-  - {fileID: 21300000, guid: 37510fa61e2fec34d98b945680b44c1f, type: 3}
-  - {fileID: 21300000, guid: ca04eb225ec1b68489f25059c2573ab3, type: 3}
-  - {fileID: 21300000, guid: a01e0c80153544940b9c34819aa3302e, type: 3}
-  - {fileID: 21300000, guid: 77a054a7cc10c2542acf7e1d69f5f40d, type: 3}
-  - {fileID: 21300000, guid: 5e085751d4d66ad4bbccff011d0781b1, type: 3}
-  - {fileID: 21300000, guid: 3ad89e4d1804ec041836d3adb75c02c5, type: 3}
-  - {fileID: 21300000, guid: 610ec305c8ec7b14486f5efc140fca39, type: 3}
-  - {fileID: 21300000, guid: 2632e97ae7a6efe4ba0391e384400cdb, type: 3}
-  - {fileID: 21300000, guid: 17a2cb8fe649b764aab3639c6e32bd8f, type: 3}
-  - {fileID: 21300000, guid: 54f4558fe4dc38b43b92bb84957a8159, type: 3}
-  - {fileID: 21300000, guid: 51559081c7c932f4280a52412d88e402, type: 3}
-  - {fileID: 21300000, guid: 5cfd39caf5aa8f643a06c50162cbc7b9, type: 3}
-  - {fileID: 21300000, guid: 17e0bd7e7e7722748a83b5bcfd52b432, type: 3}
-  - {fileID: 21300000, guid: 1b8189ea5eb46ab44bcc13da7bcdc230, type: 3}
+  - {fileID: 21300000, guid: c87baad5c0cc63d4585812ede4f142a1, type: 3}
+  - {fileID: 21300000, guid: a2940f77a73708f43b5c6c5f64a04def, type: 3}
+  - {fileID: 21300000, guid: 81d1b794a39e72a479f06d7592070aab, type: 3}
+  - {fileID: 21300000, guid: bc9bcb10e528d0c4a928fb64564733c1, type: 3}
+  - {fileID: 21300000, guid: 78e86483f68e9f44598860a80292afdd, type: 3}
+  - {fileID: 21300000, guid: a47f1238a6ac43b4c81670871bc09af8, type: 3}
+  - {fileID: 21300000, guid: 7eb98074c623b8848bef226cc2359fab, type: 3}
+  - {fileID: 21300000, guid: 2f9a79aabc90e6142ac28f1b7d3f0bfe, type: 3}
+  - {fileID: 21300000, guid: 80d0d221b0a98594493daf5cd9354e90, type: 3}
+  - {fileID: 21300000, guid: fa9dcd1754ebb874f82817dd6e496c45, type: 3}
+  - {fileID: 21300000, guid: b165632d3ed0a934c999e84c0e525205, type: 3}
+  - {fileID: 21300000, guid: 4e50eec475ff7024eaba7488177a7132, type: 3}
+  - {fileID: 21300000, guid: 3b25f3174abed8646a45d8917c10be28, type: 3}
+  - {fileID: 21300000, guid: 51b0abe178aaeaf44802ce28a998e351, type: 3}
   _coordinates: {x: 0, y: 0}
   type: 0
 --- !u!60 &2501941413431895752
@@ -166,7 +166,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.5277778, y: 1.5277778}
-    newSize: {x: 1, y: 0.8828125}
+    newSize: {x: 5.5, y: 5.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

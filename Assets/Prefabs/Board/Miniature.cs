@@ -12,7 +12,7 @@ public class Miniature : MonoBehaviour
     GameObject cam;
     BoardManager grid;
     Collider2D coll;
-    Vector3 idle;
+    [SerializeField] public Vector3 idle;
 
     [SerializeField] public Tile cell;
     [SerializeField] private Vector3 x_v = new Vector3(0.288f, -0.166f, 0);
@@ -64,16 +64,16 @@ public class Miniature : MonoBehaviour
         idle = to;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float m = (transform.position - idle).magnitude;
-        if (m > 2.0f) 
+        if (m > 1.0f) 
         { 
-            transform.position = transform.position * 0.99f + idle * 0.01f; 
+            transform.position = transform.position * 0.7f + idle * 0.3f; 
         }
         else
-        if (m > 8.0f * Time.deltaTime) {
-            transform.position -= (transform.position - idle) / m * 16.0f * Time.deltaTime;
+        if (m > 24.0f * Time.deltaTime) {
+            transform.position -= (transform.position - idle) / m * 24.0f * Time.deltaTime;
         } else
         {
             transform.position = idle;

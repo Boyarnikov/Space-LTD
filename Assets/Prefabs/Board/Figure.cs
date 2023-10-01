@@ -72,7 +72,7 @@ public class Figure : MonoBehaviour
                 if (abs(i - j) <= board_size)
                 {
                     var tile = Instantiate(cell, Vector3.zero, Quaternion.identity);
-                    tile.GetComponent<SpriteRenderer>().sortingLayerName = "Figure";
+                    tile.GetComponent<SpriteRenderer>().sortingLayerName = "FigureFront";
                     tile.name = $"Tile {i - board_size} {j - board_size}";
                     tile.transform.parent = this.transform;
                     tile.transform.position = tile.transform.parent.transform.position + offset_x + offset_y + x_v * i + y_v * j;
@@ -265,10 +265,6 @@ public class Figure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lastTransform != transform.position) {
-            minitature.GetComponent<Miniature>().UpdateMove(lastTransform, transform.position);
-        }
-        lastTransform = transform.position;
 
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -339,5 +335,11 @@ public class Figure : MonoBehaviour
                 minitature.GetComponent<Miniature>().UpdateGrid();
             }
         }
+
+        if (lastTransform != transform.position)
+        {
+            minitature.GetComponent<Miniature>().UpdateMove(lastTransform, transform.position);
+        }
+        lastTransform = transform.position;
     }
 }
