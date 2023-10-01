@@ -4,6 +4,7 @@ using UnityEngine;
 using static Unity.Mathematics.math;
 using System.Linq;
 using System;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 
 public enum TileType
@@ -43,6 +44,8 @@ public class BoardManager : MonoBehaviour
     [SerializeField] public Tile cell;
     [SerializeField] private Vector3 x_v = new Vector3(0.866f, -0.5f, 0);
     [SerializeField] private Vector3 y_v = new Vector3(0, 1.0f, 0);
+    [SerializeField] DialogueDispellerTarget target;
+    [SerializeField] GameObject frame;
 
     [SerializeField] private int board_size = 2;
     private Dictionary<Vector2, Tile> _grid;
@@ -154,6 +157,10 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+        float h = ((board_size + 1) * 2 - 1) * 1;
+        float w = ((board_size * 2 + 1) / 2 * 0.76f + (board_size + 2) * 0.4f) * 2; //0.76 0.4
+        frame.transform.localScale = new Vector2(w, h);
+        target.Settings(new Vector2(0.25f, 0.25f));
         conv = FindAnyObjectByType<Conveyor>();
         tasks = FindAnyObjectByType<TaskManager>();
 

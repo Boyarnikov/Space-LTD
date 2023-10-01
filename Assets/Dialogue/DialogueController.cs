@@ -116,6 +116,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] GameObject[] actors_prefabs;
     [SerializeField] GameObject cover_controller_prefab;
     [SerializeField] GameObject text_controller_prefab;
+    [SerializeField] DialogueDispellerTarget[] targets;
     CoverController cover_controller;
     TextWriter text_controller;
     List<AvatarController> actors_controllers;
@@ -130,14 +131,37 @@ public class DialogueController : MonoBehaviour
         InitCover();
         InitText();
         InitActors();
-        InitDialogs();
     }
 
-    public void InitDialogs() {
+    public void InitDialogsTest() {
         Phrase[] phrases = {
-            new Phrase("Hello", new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, new Vector2(0, 0), new Vector2(4, 4))),
+            new Phrase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, new Vector2(0, 0), new Vector2(4, 4))),
             new Phrase("Now I Dont Active", new PhraseActorData(Actors.GIRL1, false, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, new Vector2(2, 2), new Vector2(3, 2))),
             new Phrase("Now I Active again", new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, new Vector2(-1, -1), new Vector2(2, 3))),
+        };
+        Dialogue dialog = new Dialogue(ref phrases);
+        dialogues.Add(dialog);
+    }
+
+    public void InitDialogsRoom0()
+    {
+        string[] text = {
+            "вы инженер стройте блоки чтобы отправлять их в колонии",
+            "сверху конвеер ня",
+            "а это сборочная площадка",
+            "чтобы перетаскивать блоки можно использовать лкм",
+            "а чтобы вращать - пкм. Попробуйте ня",
+        };
+
+        Phrase[] phrases = {
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , targets[4].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[6].position , targets[6].scale)),
         };
         Dialogue dialog = new Dialogue(ref phrases);
         dialogues.Add(dialog);
@@ -236,12 +260,13 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N) && in_dialogue)
+        if (Input.GetMouseButtonDown(0) && in_dialogue)
         {
             RenderNext();
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
+            InitDialogsRoom0();
             SelectDialogue(0);
         }
     }

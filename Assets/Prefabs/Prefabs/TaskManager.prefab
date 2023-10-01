@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2170965217726471932}
   - component: {fileID: 6449392615196783029}
+  - component: {fileID: 8012905495683118500}
   m_Layer: 0
   m_Name: TaskManager
   m_TagString: Untagged
@@ -46,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659adae37c0e1e542b40f534527ea85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  minFigSize: 0
+  maxFigSize: 0
   cui: {fileID: 8420146687025405926}
   positions:
   - {x: 0, y: 0, z: 0}
@@ -55,6 +59,23 @@ MonoBehaviour:
   queueSize: 10
   queue: []
   fig: {fileID: 9180164453208665442, guid: b7e3964da75912f42ae1390dfada812a, type: 3}
+  frame: {fileID: 6766221256061329500}
+  target: {fileID: 8012905495683118500}
+  counter: {fileID: 8420146687025405926}
+--- !u!114 &8012905495683118500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163438492265273862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83855e47eb165ca46b6673314d63dd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  scale: {x: 0, y: 0}
   frame: {fileID: 6766221256061329500}
 --- !u!1 &6766221256061329500
 GameObject:

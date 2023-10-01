@@ -17,6 +17,12 @@ public class RecepyManager : MonoBehaviour
         float cam_x = Camera.main.transform.position.x;
         float cam_y = Camera.main.transform.position.y;
         transform.position = new Vector2(- cam_w + w / 2 + delta_x + 0.2f + cam_x, - cam_h + h / 2 + cam_y + 0.2f + delta_y);
+
+        DialogueDispellerTarget[] targets = GetComponentsInChildren<DialogueDispellerTarget>();
+        for (int i = 0; i < targets.Length; i++)
+        {
+            targets[i].Settings(new Vector2(0.25f, 0.25f));
+        }
     }
 
 }
