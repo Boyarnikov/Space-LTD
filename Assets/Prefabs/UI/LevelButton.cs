@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class LevelButton : MonoBehaviour
 {
     [SerializeField] string SceneName;
+    [SerializeField] public Sprite Lit;
+    [SerializeField] public Sprite Unlit;
+    public bool lit = false;
+
     Collider2D coll;
     void Start()
     {

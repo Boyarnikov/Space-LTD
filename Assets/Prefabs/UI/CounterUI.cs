@@ -41,9 +41,8 @@ public class CounterUI : MonoBehaviour
                 GameObject c = Instantiate(counter_item) as GameObject;
                 c.transform.parent = transform;
                 c.transform.position = transform.position + offset * j;
-                c.GetComponent<SpriteRenderer>().color = Color.red;
                 c.GetComponent<SpriteRenderer>().sortingLayerName = "Board";
-                c.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                c.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 items.Add(c);
             }
         }

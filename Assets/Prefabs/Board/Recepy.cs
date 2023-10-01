@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public enum RecepyOut
 public class Recepy : MonoBehaviour
 {
     [SerializeField] List<Material> materials = new List<Material>();
+    [SerializeField] List<Sprite> sprites = new List<Sprite>();
 
     [SerializeField] public RecepyIn typeIn;
     [SerializeField] public int minFigSizeIn;
@@ -154,20 +156,37 @@ public class Recepy : MonoBehaviour
         PopulateQueue();
         UpdateQueue();
 
+        List<Figure> list = new List<Figure>();
+
+        List<SpriteRenderer> s = GetComponentsInChildren<SpriteRenderer>().ToList();
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>(); 
+
+        foreach (var f in s)
+        {
+            if (f.enabled)
+            {
+                sr = f;
+                break;
+            }
+        }
 
         switch (typeOut)
         {
             case RecepyOut.Bomb:
                 transform.parent.GetComponent<Renderer>().material = materials[0];
+                sr.sprite = sprites[0];
                 break;
             case RecepyOut.Lab:
                 transform.parent.GetComponent<Renderer>().material = materials[1];
+                sr.sprite = sprites[1];
                 break;
             case RecepyOut.Farm:
                 transform.parent.GetComponent<Renderer>().material = materials[2];
+                sr.sprite = sprites[2];
                 break;
             case RecepyOut.Hotel:
                 transform.parent.GetComponent<Renderer>().material = materials[3];
+                sr.sprite = sprites[3];
                 break;
         }
 
