@@ -291,6 +291,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeIn
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeIn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: maxFigSizeOut
       value: 1
       objectReference: {fileID: 0}
@@ -909,6 +917,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeIn
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeIn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: maxFigSizeOut
       value: 1
       objectReference: {fileID: 0}
@@ -991,6 +1007,14 @@ PrefabInstance:
       objectReference: {fileID: 1249347030}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: typeIn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: maxFigSizeIn
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
+      propertyPath: minFigSizeIn
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
@@ -1145,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: maxFigSize
