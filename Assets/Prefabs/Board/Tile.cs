@@ -12,6 +12,8 @@ public class Tile : MonoBehaviour
 {
 
     [SerializeField] SpriteRenderer sp;
+    public Vector3 idle;
+    public bool moveToIdle;
 
     [SerializeField] List<Material> materials;
     [SerializeField] List<Sprite> sprites;
@@ -63,6 +65,22 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        sp.sortingOrder =  (int)(- transform.position.y * 10);
+        if (moveToIdle)
+        {
+            sp.sortingOrder = (int)(-idle.y * 10);
+            float m = (transform.position - idle).magnitude;
+            if (m > 0.2f * Time.deltaTime)
+            {
+                transform.position -= (transform.position - idle) / m * 0.2f * Time.deltaTime;
+            }
+            else
+            {
+                transform.position = idle;
+            }
+        }
+        else
+        {
+            sp.sortingOrder = (int)(-transform.position.y * 10);
+        }
     }
 }
