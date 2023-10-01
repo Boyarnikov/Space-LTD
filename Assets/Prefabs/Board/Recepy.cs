@@ -104,7 +104,7 @@ public class Recepy : MonoBehaviour
                 break;
             case RecepyIn.ThreeColor:
                 for (int i = 0; i < count; i++)
-                    d[(UnityEngine.Random.Range(0f, 1f) > 0.33f) ? TileType.Utility : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Park : TileType.House] += 1;
+                    d[(UnityEngine.Random.Range(0f, 1f) < 0.33f) ? TileType.Utility : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Park : TileType.House] += 1;
                 break;
         }
         f.GenerateRandomBasic(d);

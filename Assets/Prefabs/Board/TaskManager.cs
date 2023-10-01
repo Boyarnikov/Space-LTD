@@ -71,18 +71,20 @@ public class TaskManager : MonoBehaviour
                 break;
             case TaskType.All:
                 int super = 0;
-                if (UnityEngine.Random.Range(0, 2) == 1)
+                d[TileType.Hotel] = 0;
+                d[TileType.Farm] = 0;
+                d[TileType.Lab] = 0;
+                if (UnityEngine.Random.Range(0f, 1f) > 0.3f)
                 {
                     super = 1;
-                    d[(UnityEngine.Random.Range(0f, 1f) > 0.33f) ? TileType.Hotel : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Lab : TileType.Farm] += 1;
+                    d[(UnityEngine.Random.Range(0f, 1f) < 0.33f) ? TileType.Hotel : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Lab : TileType.Farm] += 1;
                 }
-                d[TileType.Hotel] = UnityEngine.Random.Range(0, 2);
                 d[TileType.House] = 0;
                 d[TileType.Park] = 0;
                 d[TileType.Utility] = 0;
                 for (int i = 0; i < count - super; i++)
                 {
-                    d[(UnityEngine.Random.Range(0f, 1f) > 0.33f) ? TileType.Utility : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Park : TileType.House] += 1;
+                    d[(UnityEngine.Random.Range(0f, 1f) < 0.33f) ? TileType.Utility : (UnityEngine.Random.Range(0f, 1f) > 0.5f) ? TileType.Park : TileType.House] += 1;
                 }
                 f.GenerateRandomBasic(d);
                 break;
