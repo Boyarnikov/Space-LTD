@@ -11,11 +11,10 @@ public class CounterUI : MonoBehaviour
     [SerializeField] public Vector3 start;
     [SerializeField] public Vector3 offset;
     List<GameObject> items = new List<GameObject>();
-
+    [SerializeField] public DialogueDispellerTarget target;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     public int GetCounter()

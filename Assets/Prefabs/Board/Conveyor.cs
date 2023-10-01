@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using static UnityEngine.GraphicsBuffer;
 
 
 public enum ConveyorType
@@ -23,10 +24,12 @@ public class Conveyor : MonoBehaviour
     [SerializeField] public int minFigSize;
     [SerializeField] public int maxFigSize;
     [SerializeField] public CounterUI cui;
-    [SerializeField] Vector3 offset = new Vector3 (-1f, 0, 0);
+    [SerializeField] public Vector3 offset = new Vector3 (-1f, 0, 0);
     [SerializeField] Figure figure;
     [SerializeField] int maxSize = 5;
-    [SerializeField] GameObject frame;
+    [SerializeField] public GameObject frame;
+    [SerializeField] DialogueDispellerTarget target;
+    [SerializeField] public CounterUI counter;
 
     public List<Figure> queue = new List<Figure>();
 
@@ -41,6 +44,9 @@ public class Conveyor : MonoBehaviour
         float cam_x = Camera.main.transform.position.x;
         float cam_y = Camera.main.transform.position.y;
         transform.position = new Vector2(w / 2 + offset.x / 2 + cam_x, cam_h - h / 2 + cam_y - 0.2f);
+        target.Settings(new Vector2(0.25f, 0.25f));
+        counter.target.Settings(new Vector2(0.25f, 0.25f));
+
         UpdateConveyor();
     }
 

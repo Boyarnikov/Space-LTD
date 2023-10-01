@@ -23,6 +23,8 @@ public class TaskManager : MonoBehaviour
     [SerializeField] public List<Figure> queue = new List<Figure>();
     [SerializeField] public Figure fig;
     [SerializeField] public GameObject frame;
+    [SerializeField] DialogueDispellerTarget target;
+    [SerializeField] public CounterUI counter;
 
     public void PopulateQueue()
     {
@@ -128,6 +130,8 @@ public class TaskManager : MonoBehaviour
         float cam_x = Camera.main.transform.position.x;
         float cam_y = Camera.main.transform.position.y;
         transform.position = new Vector2(cam_w - w / 2 + delta_x - 0.2f + cam_x, -cam_h + h / 2 + cam_y + delta_y + 0.2f);
+        target.Settings(new Vector2(0.25f, 0.25f));
+        counter.target.Settings(new Vector2(0.25f, 0.25f));
         PopulateQueue();
         UpdateQueue();
     }

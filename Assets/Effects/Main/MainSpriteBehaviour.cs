@@ -82,7 +82,6 @@ public class AnimationSpriteData {
             IsTimeOut();
             CalculateValue();
             Step();
-            DebugInfo();
         }
     }
     public void Step() {
