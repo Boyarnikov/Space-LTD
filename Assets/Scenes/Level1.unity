@@ -581,7 +581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: maxFigSize
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: minFigSize
@@ -708,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5147231769430360891, guid: 6a2ec514638585443875a520744ecf2d, type: 3}
       propertyPath: minFigSize
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8514411864857090264, guid: 6a2ec514638585443875a520744ecf2d, type: 3}
       propertyPath: m_LocalPosition.x
