@@ -170,21 +170,21 @@ public class DialogueController : MonoBehaviour
             "As you know, construction here is not an easy task – lack of oxygen and whatnot.",
             "So we build everything here and then transport the structure to wherever we need it! Isn’t it ingenious?",
             "Your job as an engineer is to build complex facilities out of smaller units. You can see them above",
-            "Use LMB to move a unit to the grid.",
-            "You can rotate a unit by clicking RMB.",
+            "Use [[LMB]] to move a unit to the grid.",
+            "You can rotate a unit by clicking [[RMB]].",
             "Let's install the first module in the grid",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[5], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[6], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
-            new Phrase(text[7], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
-            new Phrase(text[8], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[9], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[6], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
+            new Phrase(text[7], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
+            new Phrase(text[8], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[9], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -197,9 +197,9 @@ public class DialogueController : MonoBehaviour
             "You can rotate blueprints as well!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , new Vector2(0, 0))),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -212,15 +212,17 @@ public class DialogueController : MonoBehaviour
             "Try to finish all of them.",
             "I have also provided you with additional missions!",
             "They are optional, so don't worry if you don't complete them.",
+            "And don’t forget that you can always restart the level if you find yourself in a difficult situation",
             "Good luck!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , targets[4].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0, 3.2f), targets[3].scale * new Vector3(1, 0.35f, 1))),
             new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0, 3.2f), targets[3].scale * new Vector3(1, 0.35f, 1))),
-            new Phrase(text[5], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
+            new Phrase(text[5], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0.5f + 0.3f, 4.925f), targets[3].scale * new Vector3(0.30f, 0.20f, 1))),
+            new Phrase(text[6], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0.5f + 0.3f, 4.925f) , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -229,11 +231,11 @@ public class DialogueController : MonoBehaviour
     {
         string[] text = {
             "Great, the first batch of buildings is finished!",
-            "And by the way, you can skip dialogues by pressing RMB.",
+            "And by the way, you can skip dialogues by pressing [[RMB]].",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -244,15 +246,15 @@ public class DialogueController : MonoBehaviour
             "Last time we only used units of one type – houses.",
             "Obviously, we can’t live here without oxygen, so there’s another unit with various photosynthesizing flora, let’s call it a park for short.",
             "Some blueprints need both houses and parks.",
-            "Don’t forget that you can rotate units with RMB if you need a different configuration.",
+            "Don’t forget that you can rotate units with [[RMB]] if you need a different configuration.",
             "This works both on lying objects and on those that are carried.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position, new Vector2(0, 0))),
+            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position, new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -264,8 +266,8 @@ public class DialogueController : MonoBehaviour
             "Not that that's much praise these days",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -277,7 +279,7 @@ public class DialogueController : MonoBehaviour
             "The more units we build, the easier our life here will be!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
@@ -292,9 +294,9 @@ public class DialogueController : MonoBehaviour
             "When you complete an order, the explosives tile will appear on the conveyor next time you take something from it.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[2].position, targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[2].position, targets[2].scale - new Vector2(2, 2))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[2].position, targets[2].scale - new Vector2(2, 2))),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position , targets[3].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position , targets[3].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position, new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
@@ -304,10 +306,10 @@ public class DialogueController : MonoBehaviour
     {
         string[] text = {
             "When you send a special order new tiles appear in the conveyor queue",
-            "Clear the conveyor to gain access to it",
+            "Clear at least one space on the conveyor to gain access to it",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
         };
         return new Dialogue(ref phrases, hook);
@@ -319,7 +321,7 @@ public class DialogueController : MonoBehaviour
             "Fantastic! These multifunctional modules will surely help our colleagues!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -332,9 +334,9 @@ public class DialogueController : MonoBehaviour
             "Let’s start by clearing the grid from these debris. You can use dynamite to do it.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -348,10 +350,10 @@ public class DialogueController : MonoBehaviour
             "After you complete a recipe, the tile will appear in the conveyor queue.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[6].position , targets[6].scale)),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[6].position , targets[6].scale)),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[5].position , targets[5].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -363,8 +365,8 @@ public class DialogueController : MonoBehaviour
             "Do you think they have discounts for Space Limited™ employees?",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -379,11 +381,11 @@ public class DialogueController : MonoBehaviour
             "A satellite dish! Hehe.. Anyway…",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[7].position , targets[7].scale)),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[7].position , targets[7].scale)),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[8].position , targets[8].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[1].position , targets[1].scale)),
-            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[8].position , new Vector2(0, 0))),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[1].position , targets[1].scale)),
+            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[8].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -391,15 +393,15 @@ public class DialogueController : MonoBehaviour
     {
         string[] text = {
             "Since you have a lot of buildings here, the grid and the conveyor may become full really soon.",
-            "You can make complex buildings and then blow them up to waste awkward tiles.",
-            "Don’t worry about the budget, it’s practically limitless",
+            "You can make complex buildings from unwanted tiles and then blow them up to save some space.",
+            "Don’t worry about the building budget, it’s practically limitless",
             "Unlike our grid here.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position ,  targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position ,  targets[2].scale - new Vector2(2, 2))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , new Vector2(0, 0))),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, 1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -413,10 +415,10 @@ public class DialogueController : MonoBehaviour
             "Endless mode? That's what they call it",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position ,  targets[3].scale)),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 0, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position ,  targets[3].scale)),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , new Vector2(0, 0))),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , new Vector2(0, 0))),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, 3, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -424,16 +426,11 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs15(Func<float> hook)
     {
         string[] text = {
-            "õóõ, ýòî áûë ïîñëåäíèé çàêàç, êàæåòñÿ âñ¸",
-            "îòëè÷íî ïîðàáîòàëè!",
-            "òåïåðü, êîãäà âñå ìåõàíèêè èçó÷åíû, ìîæåì ïðèñòóïèòü ê áåñêîíå÷íîé ðàáîòå",
-            "ñëàâà àðñòîöêå",
+            "Endless mode! Ñomplete side missions to get stars",
+
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, targets[3].position ,  targets[3].scale)),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[3].position , new Vector2(0, 0))),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , targets[8].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[8].position , new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, 2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0, 3.2f), targets[3].scale * new Vector3(1, 0.35f, 1))),
         };
         return new Dialogue(ref phrases, hook);
     }

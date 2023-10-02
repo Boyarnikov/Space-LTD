@@ -14,7 +14,8 @@ public enum ConveyorType
     MonoColor,
     HousePark,
     ThreeColor,
-    TrashyHousePark
+    TrashyHousePark,
+    TrashyThreeColor
 }
 
 
@@ -43,7 +44,7 @@ public class Conveyor : MonoBehaviour
         float cam_h = Camera.main.orthographicSize;
         float cam_x = Camera.main.transform.position.x;
         float cam_y = Camera.main.transform.position.y;
-        transform.position = new Vector2(w / 2 + offset.x / 2 + cam_x, cam_h - h / 2 + cam_y - 0.2f + 0.2f);
+        transform.position = new Vector2(w / 2 + offset.x / 2 + cam_x + 0.3f, cam_h - h / 2 + cam_y - 0.2f + 0.2f);
         target.Settings(new Vector2(0.25f, 0.25f));
         counter.target.Settings(new Vector2(0.25f, 0.25f));
 
@@ -54,6 +55,8 @@ public class Conveyor : MonoBehaviour
     {
         var f = Instantiate(figure);
 
+        Dictionary<TileType, int> d = new Dictionary<TileType, int>();
+        int count = UnityEngine.Random.Range(minFigSize, maxFigSize + 1);
         switch (type)
         {
             case ConveyorType.MonoColor:
@@ -66,8 +69,7 @@ public class Conveyor : MonoBehaviour
                 f.GenerateRandomBasic(UnityEngine.Random.Range(minFigSize, maxFigSize + 1));
                 break;
             case ConveyorType.TrashyHousePark:
-                Dictionary<TileType, int> d = new Dictionary<TileType, int>();
-                int count = UnityEngine.Random.Range(minFigSize, maxFigSize + 1);
+                
                 if (count > 1)
                     d[TileType.Trash] = UnityEngine.Random.Range(0, 2);
                 else d[TileType.Trash] = 0;
@@ -80,6 +82,29 @@ public class Conveyor : MonoBehaviour
                     } else
                     {
                         d[TileType.Park] += 1;
+                    }
+                }
+                f.GenerateRandomBasic(d);
+                break;
+            case ConveyorType.TrashyThreeColor:
+                if (count > 1 && UnityEngine.Random.Range(0f, 1f) > 0.66)
+                    d[TileType.Trash] = 1;
+                else d[TileType.Trash] = 0;
+                d[TileType.House] = 0;
+                d[TileType.Park] = 0;
+                d[TileType.Utility] = 0;
+                for (int i = 0; i < count - d[TileType.Trash]; i++)
+                {
+                    if (UnityEngine.Random.Range(0f, 1f) > 0.80)
+                    {
+                        d[TileType.House] += 1;
+                    }
+                    else if(UnityEngine.Random.Range(0f, 1f) > 0.5)
+                    {
+                        d[TileType.Park] += 1;
+                    } else
+                    {
+                        d[TileType.Utility] += 1;
                     }
                 }
                 f.GenerateRandomBasic(d);

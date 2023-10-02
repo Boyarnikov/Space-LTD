@@ -187,7 +187,7 @@ public class BoardManager : MonoBehaviour
         tasks.types = h2.Count();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!startDialog)
         {
@@ -212,6 +212,10 @@ public class BoardManager : MonoBehaviour
                 case (4):
                     //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
                     controller.SelectDialogue(12, () => { return 0; });
+                    break;
+                case (5):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(15, () => { return 0; });
                     break;
             }
             startDialog = true;
@@ -260,6 +264,7 @@ public class BoardManager : MonoBehaviour
 
             if (is_placable)
             {
+                SoundManager.instance.Place();
                 tasks.turn += 1;
 
                 foreach (var key in f._grid.Keys)
@@ -339,6 +344,7 @@ public class BoardManager : MonoBehaviour
                     if (tasks.queue[i].gameObject.GetInstanceID() == f.gameObject.GetInstanceID())
                     {
                         tasks.queue[i] = null;
+                        tasks.done += 1;
 
                         // first done task of a mission
                         if (!firstTaskDone)
@@ -368,6 +374,7 @@ public class BoardManager : MonoBehaviour
                                         if (Globals.levelsUnlocked < 2) { Globals.levelsUnlocked = 2; }
                                         if (Globals.levelsDone < 1) { Globals.levelsDone = 1; }
                                         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        if (tasks.task_done && !tasks.task_failed) { Globals.stars[0] = 1; }
                                         return 0; 
                                     });
                                     break;
@@ -376,6 +383,7 @@ public class BoardManager : MonoBehaviour
                                         if (Globals.levelsUnlocked < 3) { Globals.levelsUnlocked = 3; }
                                         if (Globals.levelsDone < 2) { Globals.levelsDone = 2; }
                                         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        if (tasks.task_done && !tasks.task_failed) { Globals.stars[1] = 1; }
                                         return 0;
                                     });
                                     break;
@@ -384,6 +392,7 @@ public class BoardManager : MonoBehaviour
                                         if (Globals.levelsUnlocked < 4) { Globals.levelsUnlocked = 4; }
                                         if (Globals.levelsDone < 3) { Globals.levelsDone = 3; }
                                         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        if (tasks.task_done && !tasks.task_failed) { Globals.stars[2] = 1; }
                                         return 0;
                                     });
                                     break;
@@ -392,6 +401,7 @@ public class BoardManager : MonoBehaviour
                                         if (Globals.levelsUnlocked < 5) { Globals.levelsUnlocked = 5; }
                                         if (Globals.levelsDone < 4) { Globals.levelsDone = 4; }
                                         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        if (tasks.task_done && !tasks.task_failed) { Globals.stars[3] = 1; }
                                         return 0;
                                     });
                                     break;
@@ -400,6 +410,7 @@ public class BoardManager : MonoBehaviour
                                         if (Globals.levelsUnlocked < 6) { Globals.levelsUnlocked = 6; }
                                         if (Globals.levelsDone < 5) { Globals.levelsDone = 5; }
                                         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        if (tasks.task_done && !tasks.task_failed) { Globals.stars[4] = 1; }
                                         return 0;
                                     });
                                     break;
@@ -414,6 +425,10 @@ public class BoardManager : MonoBehaviour
                 conv.UpdateConveyor();
                 tasks.UpdateQueue();
                 Destroy(f.gameObject);
+            }
+            else
+            {
+                SoundManager.instance.Wrong();
             }
         }
     }

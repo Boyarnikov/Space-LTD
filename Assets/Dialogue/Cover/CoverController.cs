@@ -13,6 +13,8 @@ public class CoverController : MonoBehaviour
     [SerializeField] Vector2 dispeller_target_position;
     [SerializeField] Vector2 dispeller_target_size;
 
+    bool ugly = true;
+
     DispellerController dispeller;
 
     bool open = false;
@@ -20,9 +22,7 @@ public class CoverController : MonoBehaviour
     {
         InitDispeller();
         transform.localScale = new Vector2(1000, 1000);
-        int key = (int)AnimationSpriteParameters.MULTIPLY_ALPHA;
-        sprite_behaviour.data[key].Set(cover_alpha);
-        sprite_behaviour.SetMainColor(Color.black);
+
     }
 
     public void InitDispeller()
@@ -65,6 +65,15 @@ public class CoverController : MonoBehaviour
 
     void Update()
     {
+        int key = (int)AnimationSpriteParameters.MULTIPLY_ALPHA;
+        if (sprite_behaviour is not null && sprite_behaviour.data is not null && ugly)
+        {
+            sprite_behaviour.data[key].Set(cover_alpha);
+            sprite_behaviour.SetMainColor(Color.black);
+            ugly = false;
+        }
+
+
         /*
         if (Input.GetKeyDown("space"))
         {

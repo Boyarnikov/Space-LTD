@@ -24,6 +24,11 @@ public class TaskManager : MonoBehaviour
     public bool task_failed = false;
     public bool task_done = false;
 
+    int endless_mission = 2;
+    int endless_step = 2;
+    int endless_inc = 2;
+    int endless_count = 0;
+
     TMPro.TextMeshPro taskTextMesh;
 
     [SerializeField] public CounterUI cui;
@@ -38,6 +43,7 @@ public class TaskManager : MonoBehaviour
     public int turn = 0;
     public int filled = 1;
     public int types = 0;
+    public int done = 0;
 
     bool startTask = false;
 
@@ -133,7 +139,19 @@ public class TaskManager : MonoBehaviour
             for (int i = queue.Count; i < queueSize; i++)
             {
                 var f = CreateFigure();
+                f.transform.position = f.idle;
                 queue.Add(f);
+
+                if (i < positions.Count)
+                {
+                    queue[i].transform.position = positions[i] + transform.position;
+                }
+                else
+                {
+                    queue[i].transform.position = new Vector3(200, 0, 0);
+                }
+                queue[i].idle = queue[i].transform.position;
+
             }
         }
 
@@ -181,6 +199,13 @@ public class TaskManager : MonoBehaviour
                     task_failed = true;
                 }
                 break;
+            case (1):
+                task_done = true;
+                if (turn > 20)
+                {
+                    task_failed = true;
+                }
+                break;
             case (2):
                 if (filled == 19)
                 {
@@ -199,6 +224,19 @@ public class TaskManager : MonoBehaviour
                     task_done = true;
                 }
                 break;
+            case (5):
+                if (endless_mission <= done)
+                {
+                    endless_mission += endless_step;
+                    endless_step += endless_inc;
+                    endless_count++;
+                    if (endless_count > Globals.stars[5])
+                    {
+                        Globals.stars[5] = endless_count;
+                    }
+                }
+                break;
+
         }
     }
 
@@ -210,19 +248,25 @@ public class TaskManager : MonoBehaviour
         switch (level) 
         { 
             case (0):
-                taskText = "Finish in\r\n30 turns\r\nTurn " + turn + "/30";
+                taskText = "Finish in\r\n30 turns\r\n[Turn: " + turn + "/30]";
+                break;
+            case (1):
+                taskText = "Finish in\r\n20 turns\r\n[Turn: " + turn + "/20]";
                 break;
             case (2):
-                taskText = "Have fully\r\nfilled grid\r\nTiles " + filled + "/19";
-                if (task_done) taskText = "Have fully\r\nfilled grid\r\nDone";
+                taskText = "Have fully\r\nfilled grid\r\n[Tiles: " + filled + "/19]";
+                if (task_done) taskText = "Have fully\r\nfilled grid\r\n[Done]";
                 break;
             case (3):
-                taskText = "Have fully\r\nemptied grid\r\nTiles " + filled + "/0";
-                if (task_done) taskText = "Have fully\r\nemptied grid\r\nDone";
+                taskText = "Have fully\r\nemptied grid\r\n[Tiles: " + filled + "/0]";
+                if (task_done) taskText = "Have fully\r\nemptied grid\r\n[Done]";
                 break;
             case (4):
-                taskText = "Have all types\r\nof buildings\r\nTypes " + types + "/6";
-                if (task_done) taskText = "Have all types\r\nof buildings\r\nDone";
+                taskText = "Have all types\r\nof buildings\r\n[Types: " + types + "/6]";
+                if (task_done) taskText = "Have all types\r\nof buildings\r\n[Done]";
+                break;
+            case (5):
+                taskText = "Do requests\r\n[Requests: " + done + "/" + endless_mission + "]\r\n[Stars: " + endless_count + "]";
                 break;
         }
 

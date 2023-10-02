@@ -189,7 +189,6 @@ public class MainSpriteBehaviour : MonoBehaviour
 
     public float SetSubColorAlpha(float alpha)
     {
-        Debug.Log("SET_COLOT");
         sprite_renderer.material.SetFloat("_SubColorAlpha", alpha);
         return 0;
     }

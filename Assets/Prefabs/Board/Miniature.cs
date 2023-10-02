@@ -78,5 +78,6 @@ public class Miniature : MonoBehaviour
         {
             transform.position = idle;
         }
+
     }
 }

@@ -12,6 +12,7 @@ public class CounterUI : MonoBehaviour
     [SerializeField] public Vector3 offset;
     List<GameObject> items = new List<GameObject>();
     [SerializeField] public DialogueDispellerTarget target;
+    [SerializeField] public string level = "Board";
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,7 @@ public class CounterUI : MonoBehaviour
                 GameObject c = Instantiate(counter_item) as GameObject;
                 c.transform.parent = transform;
                 c.transform.position = transform.position + offset * j;
-                c.GetComponent<SpriteRenderer>().sortingLayerName = "Board";
+                c.GetComponent<SpriteRenderer>().sortingLayerName = level;
                 c.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 items.Add(c);
             }

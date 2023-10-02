@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] List<Material> materials;
     [SerializeField] List<Sprite> sprites;
+    [SerializeField] List<Sprite> sup;
 
     GameObject cam;
     BoardManager grid;
@@ -52,9 +53,18 @@ public class Tile : MonoBehaviour
         if ((int)type >= 0)
             {
                 if ((int) type >= materials.Count)
+                {
                     gameObject.GetComponent<Renderer>().material = materials[(int)type - 6];
+                    if (sup is not null && sup.Count > 1)
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sup[1];
+                }
+                    
                 else
+                {
                     gameObject.GetComponent<Renderer>().material = materials[(int)type];
+                    if (sup is not null && sup.Count > 0)
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sup[0];
+                }
             }  
             else
                 gameObject.GetComponent<Renderer>().material = null;

@@ -805,6 +805,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: queueSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: maxFigSize
       value: 6
       objectReference: {fileID: 0}

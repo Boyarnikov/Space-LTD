@@ -273,6 +273,7 @@ public class Figure : MonoBehaviour
         {
             if (coll == Physics2D.OverlapPoint(mousePos))
             {
+                SoundManager.instance.Pick();
                 canMove = true;
                 minitature.SetActive(false);
                 foreach (var tile in _grid.Values)
@@ -341,5 +342,14 @@ public class Figure : MonoBehaviour
             minitature.GetComponent<Miniature>().UpdateMove(lastTransform, transform.position);
         }
         lastTransform = transform.position;
-    }
+
+
+        if (!canMove && coll == Physics2D.OverlapPoint(mousePos))
+        {
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        }
+        else
+        {
+            transform.localScale = Vector3.one;
+        }    }
 }

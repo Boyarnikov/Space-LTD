@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4087530128989414680}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6294377609332808199
 SpriteRenderer:
@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 6294377609332808199}
+  idle: {x: 0, y: 0, z: 0}
+  moveToIdle: 0
   materials:
-  - {fileID: 2100000, guid: 2694457efcf896b42894b47a8a5cdd2c, type: 2}
+  - {fileID: 2100000, guid: 2e7c634f32db4e04abad588c0c81f9c6, type: 2}
   - {fileID: 2100000, guid: 05f7381b711c562498ae94c2e93b123d, type: 2}
   - {fileID: 2100000, guid: 6521f03e8fa2b354d89554c806ba3117, type: 2}
   - {fileID: 2100000, guid: 5e1c20ad6a81ff14580233dcf417cde5, type: 2}
@@ -110,5 +112,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 184e25b7dac051f44836722aa0585e4e, type: 2}
   - {fileID: 2100000, guid: e123080bcc7356048bd155293dba09fe, type: 2}
   sprites: []
+  sup:
+  - {fileID: 2747690628134850419, guid: 30f8f4620a6a7284e955ebb08ad66032, type: 3}
+  - {fileID: 21300000, guid: 62cae9ad3a3dae947a49f16d066c5d04, type: 3}
   _coordinates: {x: 0, y: 0}
   type: 0

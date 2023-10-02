@@ -162,4 +162,7 @@ MonoBehaviour:
   sprite_renderer: {fileID: -7114305217156502163}
   positions: []
   sprites:
-  - {fileID: 21300000, guid: 44db0bdd5f7592b44b60c65e80448b41, type: 3}
+  - {fileID: 21300000, guid: 6f5459e37d4ed8f43bdbc75eb2d5901b, type: 3}
+  - {fileID: 21300000, guid: d504420a529531a4289c9fc8c58ff63f, type: 3}
+  - {fileID: 21300000, guid: 15dbddc435d4b4f498f9fe629e633900, type: 3}
+  - {fileID: 21300000, guid: 8f3fd406a6dd98c478c692f93033a880, type: 3}
