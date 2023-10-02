@@ -194,7 +194,7 @@ public class MainSpriteBehaviour : MonoBehaviour
         return 0;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         UpdateData();
     }

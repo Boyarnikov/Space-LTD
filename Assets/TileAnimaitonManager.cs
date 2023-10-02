@@ -14,7 +14,7 @@ public class TileAnimaitonManager : MonoBehaviour
     {
         sprite_behaviour.SetSubColor(Color.red);
         int key = (int)AnimationSpriteParameters.SUB_COLOR_ALPHA;
-        sprite_behaviour.data[key].speed = 0.01f;
+        sprite_behaviour.data[key].speed = 0.05f;
         sprite_behaviour.data[key].repeat = false;
         sprite_behaviour.data[key].reset = true;
         sprite_behaviour.data[key].Front();

@@ -43,7 +43,7 @@ public class CoverController : MonoBehaviour
         SetDispellerTargetForce(new Vector2(0, 0), new Vector2(0, 0));
         open = true;
         int key = (int)AnimationSpriteParameters.ALPHA;
-        sprite_behaviour.data[key].speed = 0.01f;
+        sprite_behaviour.data[key].speed = 0.05f;
         sprite_behaviour.data[key].repeat = false;
         sprite_behaviour.data[key].reset = false;
         sprite_behaviour.data[key].Front();
@@ -55,7 +55,7 @@ public class CoverController : MonoBehaviour
     {
         open = false;
         int key = (int)AnimationSpriteParameters.ALPHA;
-        sprite_behaviour.data[key].speed = -0.01f;
+        sprite_behaviour.data[key].speed = -0.05f;
         sprite_behaviour.data[key].repeat = false;
         sprite_behaviour.data[key].reset = false;
         sprite_behaviour.data[key].Back();
