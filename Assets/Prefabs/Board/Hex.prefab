@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1231513418741380101}
   - component: {fileID: -5485364390395305477}
   - component: {fileID: 2501941413431895752}
+  - component: {fileID: 9187666342009666600}
+  - component: {fileID: 8035310819435410648}
   m_Layer: 0
   m_Name: Hex
   m_TagString: Tile
@@ -54,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e6878b6c821b8d347ab2a70a296b8b78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,9 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 1231513418741380101}
+  idle: {x: 0, y: 0, z: 0}
+  moveToIdle: 0
   materials:
   - {fileID: 2100000, guid: 2e7c634f32db4e04abad588c0c81f9c6, type: 2}
-  - {fileID: 2100000, guid: 05f7381b711c562498ae94c2e93b123d, type: 2}
+  - {fileID: 2100000, guid: e6878b6c821b8d347ab2a70a296b8b78, type: 2}
   - {fileID: 2100000, guid: 6521f03e8fa2b354d89554c806ba3117, type: 2}
   - {fileID: 2100000, guid: 5e1c20ad6a81ff14580233dcf417cde5, type: 2}
   - {fileID: 2100000, guid: aaed00b0e50952b44a96963b5671ced3, type: 2}
@@ -180,3 +184,108 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.25, y: 0.43359375}
   m_UseDelaunayMesh: 0
+--- !u!114 &9187666342009666600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894093864659262112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5169a30c4c69f04681332d168c23c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.27452967
+    - serializedVersion: 3
+      time: 0.50064075
+      value: 0.99578124
+      inSlope: -0.00446261
+      outSlope: -0.00446261
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.225467
+    - serializedVersion: 3
+      time: 0.9999968
+      value: -0.00001266785
+      inSlope: -0.46459785
+      outSlope: -0.46459785
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2135389
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sprite_renderer: {fileID: 1231513418741380101}
+--- !u!114 &8035310819435410648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894093864659262112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9854282828bf84fb32740d333667fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite_behaviour: {fileID: 9187666342009666600}

@@ -247,6 +247,7 @@ public class BoardManager : MonoBehaviour
                     if (Conversions[conv_key] == TileType.None)
                     {
                         //Debug.Log("cannot convert " + (int)t1 + " to " + (int)t2);
+                        _grid[key + ind].gameObject.GetComponent<TileAnimaitonManager>().UncorrectAnimation();
                     }
                     //_grid[key + ind].Init(f._grid[key].type);
                 }
