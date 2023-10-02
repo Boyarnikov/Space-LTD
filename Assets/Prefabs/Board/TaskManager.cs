@@ -115,7 +115,7 @@ public class TaskManager : MonoBehaviour
 
         if (cui is not null)
         {
-            cui.UpdateCounter(queue.Count - 4);
+            cui.UpdateCounter(queue.Count);
         }
     }
 
