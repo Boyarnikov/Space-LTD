@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -161,18 +163,28 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs0(Func<float> hook)
     {
         string[] text = {
-            "вы инженер стройте блоки чтобы отправл€ть их в колонии",
-            "сверху конвеер н€",
-            "а это сборочна€ площадка",
-            "чтобы перетаскивать блоки можно использовать лкм",
-            "а чтобы вращать - пкм. ѕопробуйте н€",
+            "You finally arrived! I was told it would happen soon, but you know, time passes a bit differently hereЕ",
+            "Uh, anyway, on behalf of our team, IТm honored to greet you here, on Mars!",
+            "WeТve finished the basic preparations, but we still need more space to live and work.",
+            "ThatТs why we need help to expand our facilities. And thatТs exactly what youТre going to help with.",
+            "As you know, construction here is not an easy task Ц lack of oxygen and whatnot.",
+            "So we build everything here and then transport the structure to wherever we need it! IsnТt it ingenious?",
+            "Your job as an engineer is to build complex facilities out of smaller units. You can see them above",
+            "Use LMB to move a unit to the grid.",
+            "You can rotate a unit by clicking RMB.",
+            "Let's install the first module in the grid",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[2].position , targets[2].scale)),
-            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[2].position , targets[2].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[5], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[6], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[0].position , targets[0].scale)),
+            new Phrase(text[7], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
+            new Phrase(text[8], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[9], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -180,16 +192,14 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs1(Func<float> hook)
     {
         string[] text = {
-            "сЄ кайфово н€",
-            "справа есть задани€ их надо выполн€ть",
-            "чтобы выполнить задание нужно перенести его блюпринт на готовую структуру",
-            "блюпринты тоже можно врощать! попробуйте н€",
+            "Your tasks are on the right: you can see blueprints that you have to copy. ",
+            "To submit a blueprint drag it over your units on the grid",
+            "You can rotate blueprints as well!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -197,14 +207,16 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs2(Func<float> hook)
     {
         string[] text = {
-            "эти кружочки показывают сколько у вас заданий в запасе",
-            "ваша задача как инженера блоков выполнить все задани€",
-            "приступем!",
+            "Congratulations on your first building!",
+            "Here you can see how many blueprints are left.",
+            "Try to finish all of them.",
+            "Good luck with it!",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , targets[4].scale)),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
-            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , targets[4].scale)),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -212,8 +224,8 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs3(Func<float> hook)
     {
         string[] text = {
-            "отлична€ работа!",
-            "в дальнейшем не забывайте что чтобы скипать диалоги можно использовать пкм",
+            "Great, the first batch of buildings is finished!",
+            "And by the way, you can skip dialogues by pressing RMB.",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
@@ -225,14 +237,14 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs4(Func<float> hook)
     {
         string[] text = {
-            "ух, как хорошо получить ангар по-больше",
-            "в прошлый раз мы использовали только жилые блоки",
-            "в этот раз будем строить ещЄ и парки, они полезны дл€ людей блаблабла",
-            "ѕоэтору некоторые заказы требуют оба вида блоков",
-            "не забывайте что вращать блоки можно нажима€ на пкм, даже если вы их не переносите!",
+            "Last time we only used units of one type Ц houses.",
+            "Obviously, we canТt live here without oxygen, so thereТs another unit with various photosynthesizing flora, letТs call it a park for short.",
+            "Some blueprints need both houses and parks.",
+            "DonТt forget that you can rotate units with RMB if you need a different configuration.",
+            "This works both on lying objects and on those that are carried.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
             new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
@@ -244,10 +256,12 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs5(Func<float> hook)
     {
         string[] text = {
-            "Ёкологи€ очень важна блаблабла",
+            "Good job! Now the ecology here is probably better than back on Earth.",
+            "Not that that's much praise these days",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -255,8 +269,8 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs6(Func<float> hook)
     {
         string[] text = {
-            " олони€м так же нужны батареи и прочие ютилити чтобы выживать",
-            "—обира€ конструкции таким образом мы можем упростить постройку колоний на всЄм марсе!",
+            "Our colony also needs utility units Ц for example, solar panels and batteries for producing and storing electricity.",
+            "The more units we build, the easier our life here will be!",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
@@ -268,18 +282,16 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs7(Func<float> hook)
     {
         string[] text = {
-            "заказы модулей всегда ориентируютс€ на неровную местность марса",
-            "поэтому часто их сложно собрать из уже имеющихс€ модулей",
-            "иногда бывает полезно утилизировать уже установленные тайлы",
-            "взывчатку можно получить выполнив заказ на модуль дл€ компании динамит(с)",
-            "не забывайте что вращать блоки можно нажима€ на пкм, даже если вы их не переносите!",
+            "I forgot to mention: you know how sometimes the units are already in place and you can use them to complete the blueprints?",
+            "If these units get in your way, you can dispose of them!",
+            "You can take an order from Pow-powder SolutionsЩ to get explosives.",
+            "When you complete an order, the explosives tile will appear on the conveyor next time you take something from it.",
         };
         Phrase[] phrases = {
-            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[2].position, targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[2].position, targets[2].scale - new Vector2(2, 2))),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position , targets[3].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
-            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position, new Vector2(0, 0))),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(false, targets[3].position, new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -287,8 +299,8 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs8(Func<float> hook)
     {
         string[] text = {
-            "когда вы выполн€ете спецзаказ - тайлы оказываютс€ в очереди конвеера",
-            "освободите конвеер чтобы получить к нему доступ",
+            "When you send a special order new tiles appear in the conveyor queue",
+            "Clear the conveyor to gain access to it",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[1].position , targets[1].scale)),
@@ -297,15 +309,28 @@ public class DialogueController : MonoBehaviour
         return new Dialogue(ref phrases, hook);
     }
 
+    public Dialogue InitDialogs16(Func<float> hook)
+    {
+        string[] text = {
+            "Fantastic! These multifunctional modules will surely help our colleagues!",
+        };
+        Phrase[] phrases = {
+            new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+        };
+        return new Dialogue(ref phrases, hook);
+    }
+
     public Dialogue InitDialogs9(Func<float> hook)
     {
         string[] text = {
-            "после вчерашней песчаной бури у нас серьЄзные поломки в модул€х",
-            "давайте начнЄм с того что расчистим завали при помощи динамита",
+            "Oh noЕ It seems like yesterdayТs sandstorm caused some units to malfunction and collapse. ",
+            "Fortunately, no one got hurt. ",
+            "LetТs start by clearing the grid from these debris. You can use dynamite to do it.",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
-            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position , targets[2].scale - new Vector2(2, 2))),
+            new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.RIGHT), new PhraseDispellerData(true, targets[5].position , targets[5].scale)),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -313,10 +338,10 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs10(Func<float> hook)
     {
         string[] text = {
-            "некоторые станции требуют более продвинутые и требуют более крутых зданий",
-            "\"отели\" - апартаменты высшего класса дл€ крутых",
-            "дл€ их конструкции требуютс€ структуры с парками и домами",
-            "после выполнени€ они так же по€в€тс€ в очереди на конвеер",
+            "Some of the facilities require complex units: these are tiles that are made from two basic buildings of different types.",
+            "For example, here we have hotels. Imagine how much money people pay to spend their vacation hereЕ",
+            "Anyway, to make a hotel unit you need to combine house tiles and park tiles. ",
+            "After you complete a recipe, the tile will appear in the conveyor queue.",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
@@ -330,10 +355,12 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs11(Func<float> hook)
     {
         string[] text = {
-            "надеюсь нам дадут пожить в этих крутых отел€х)))",
+            "I wonder if I could stay in a hotel like this at least for a couple of daysЕ",
+            "Do you think they have discounts for Space LimitedЩ employees?",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
+            new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(false, new Vector2(0, 0), new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }
@@ -341,11 +368,11 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs12(Func<float> hook)
     {
         string[] text = {
-            "ƒл€ полноценной работы большим колони€м нужны ещЄ здани€",
-            "Ќапример фермы, они корм€т народ кайф\r\nв) дл€ их сборки нужны батареи и парки",
-            "„тобы двигать нашу науку так же нужны лаборатории",
-            "их делают из батарей и зданий",
-            "постараемс€!",
+            "Alright, weТre really close to making our base totally functional! We just need some more units:",
+            "Combine batteries and houses to make labs",
+            "Or combine batteries and parks to make farms",
+            "WhatТs an astronomerТs favorite meal?",
+            "A satellite dish! Hehe.. AnywayЕ",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position , targets[3].scale)),
@@ -359,10 +386,10 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs13(Func<float> hook)
     {
         string[] text = {
-            "с таким количеством построек ангар и конвеер могут быстро переполнитьс€",
-            "не нужно бо€тьс€ собирать сложные здани€ и потом взрывать их",
-            "так мы можем сэкономить место",
-            "благо бюджет у нас считай бесконечный)",
+            "Since you have a lot of buildings here, the grid and the conveyor may become full really soon.",
+            "You can make complex buildings and then blow them up to waste awkward tiles.",
+            "DonТt worry about the budget, itТs practically limitless",
+            "Unlike our grid here.",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[2].position ,  targets[2].scale - new Vector2(2, 2))),
@@ -376,10 +403,10 @@ public class DialogueController : MonoBehaviour
     public Dialogue InitDialogs14(Func<float> hook)
     {
         string[] text = {
-            "хух, это был последний заказ, кажетс€ всЄ",
-            "отлично поработали!",
-            "теперь, когда все механики изучены, можем приступить к бесконечной работе",
-            "слава арстоцке",
+            "Well done!",
+            "Now you know everything about building on Mars, you can get to work",
+            "More tasks await!",
+            "Endless mode? That's what they call it",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position ,  targets[3].scale)),
@@ -425,6 +452,7 @@ public class DialogueController : MonoBehaviour
         if (number == 13) return InitDialogs13(hook);
         if (number == 14) return InitDialogs14(hook);
         if (number == 15) return InitDialogs15(hook);
+        if (number == 16) return InitDialogs16(hook);
         return InitDialogs0(hook);
     }
 

@@ -42,8 +42,6 @@ public class CoverController : MonoBehaviour
         SetDispellerTargetForce(new Vector2(0, 0), new Vector2(0, 0));
         open = true;
         int key = (int)AnimationSpriteParameters.ALPHA;
-        Debug.Log(key);
-        Debug.Log(sprite_behaviour.data.Count);
         sprite_behaviour.data[key].speed = 0.01f;
         sprite_behaviour.data[key].repeat = false;
         sprite_behaviour.data[key].reset = false;

@@ -4,6 +4,7 @@ using UnityEngine;
 using static Unity.Mathematics.math;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 
@@ -39,6 +40,13 @@ public static class TileConsts
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
+
+    [SerializeField] int level = -1;
+    DialogueController controller;
+    bool startDialog = false;
+    bool firstPlacment = false;
+    bool firstTaskDone = false;
+    bool firstRecepyDone = false;
 
     [SerializeField] public bool trashed;
     [SerializeField] public Tile cell;
@@ -150,11 +158,6 @@ public class BoardManager : MonoBehaviour
         return -board_size * x_v / 2 + (x_v + y_v) * board_size;
     }
 
-    void UpdateMousePosition()
-    {
-
-    }
-
     void Start()
     {
         float h = ((board_size + 1) * 2 - 1) * 1;
@@ -168,11 +171,39 @@ public class BoardManager : MonoBehaviour
 
         GenerateGrid();
         GenerateConversions();
+
+        controller = FindAnyObjectByType<DialogueController>();
     }
 
-    void Update()
+    private void Update()
     {
-        UpdateMousePosition();
+        if (!startDialog)
+        {
+            switch (level)
+            {
+                case (0):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(0, () => { return 0; });
+                    break;
+                case (1):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(4, () => { return 0; });
+                    break;
+                case (2):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(6, () => { return 0; });
+                    break;
+                case (3):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(9, () => { return 0; });
+                    break;
+                case (4):
+                    //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                    controller.SelectDialogue(12, () => { return 0; });
+                    break;
+            }
+            startDialog = true;
+        }
     }
 
     public void PlaceFigure(Figure f)
@@ -227,6 +258,17 @@ public class BoardManager : MonoBehaviour
                         _grid[key + ind].Init(Conversions[conv_key]);
                     }
                 }
+                if (!firstPlacment)
+                {
+                    switch (level)
+                    {
+                        case (0):
+                            //controller.SelectDialogue(0, () => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); return 0; });
+                            controller.SelectDialogue(1, () => { return 0; });
+                            break;
+                    }
+                }
+                firstPlacment = true;
 
                 foreach (var r in recepies)
                 {
@@ -236,6 +278,20 @@ public class BoardManager : MonoBehaviour
                         {
                             r.TaskDone();
                             r.queue[i] = null;
+
+                            if (!firstRecepyDone)
+                            {
+                                switch (level)
+                                {
+                                    case (2):
+                                        controller.SelectDialogue(8, () => { return 0; });
+                                        break;
+                                    case (3):
+                                        controller.SelectDialogue(10, () => { return 0; });
+                                        break;
+                                }
+                            }
+                            firstRecepyDone = true;
                         }
                     }
                     r.UpdateQueue();
@@ -252,7 +308,78 @@ public class BoardManager : MonoBehaviour
                 for (int i = 0; i < tasks.queue.Count; i++)
                 {
                     if (tasks.queue[i].gameObject.GetInstanceID() == f.gameObject.GetInstanceID())
+                    {
                         tasks.queue[i] = null;
+
+                        // first done task of a mission
+                        if (!firstTaskDone)
+                        {
+                            switch (level)
+                            {
+                                case (0):
+                                    controller.SelectDialogue(2, () => { return 0; });
+                                    break;
+                                case (2):
+                                    controller.SelectDialogue(7, () => { return 0; });
+                                    break;
+                                case (4):
+                                    controller.SelectDialogue(13, () => { return 0; });
+                                    break;
+                            }
+                        }
+                        firstTaskDone = true;
+
+                        // end of a mission
+                        if (tasks.queue.Count == 1)
+                        {
+                            switch (level)
+                            {
+                                case (0):
+                                    controller.SelectDialogue(3, () => { 
+                                        if (Globals.levelsUnlocked < 2) { Globals.levelsUnlocked = 2; }
+                                        if (Globals.levelsDone < 1) { Globals.levelsDone = 1; }
+                                        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        return 0; 
+                                    });
+                                    break;
+                                case (1):
+                                    controller.SelectDialogue(5, () => {
+                                        if (Globals.levelsUnlocked < 3) { Globals.levelsUnlocked = 3; }
+                                        if (Globals.levelsDone < 2) { Globals.levelsDone = 2; }
+                                        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        return 0;
+                                    });
+                                    break;
+                                case (2):
+                                    controller.SelectDialogue(16, () => {
+                                        if (Globals.levelsUnlocked < 4) { Globals.levelsUnlocked = 4; }
+                                        if (Globals.levelsDone < 3) { Globals.levelsDone = 3; }
+                                        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        return 0;
+                                    });
+                                    break;
+                                case (3):
+                                    controller.SelectDialogue(11, () => {
+                                        if (Globals.levelsUnlocked < 5) { Globals.levelsUnlocked = 5; }
+                                        if (Globals.levelsDone < 4) { Globals.levelsDone = 4; }
+                                        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        return 0;
+                                    });
+                                    break;
+                                case (4):
+                                    controller.SelectDialogue(14, () => {
+                                        if (Globals.levelsUnlocked < 6) { Globals.levelsUnlocked = 6; }
+                                        if (Globals.levelsDone < 5) { Globals.levelsDone = 5; }
+                                        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                                        return 0;
+                                    });
+                                    break;
+                            }
+                        }
+
+
+                    }
+                        
                 }
 
                 conv.UpdateConveyor();

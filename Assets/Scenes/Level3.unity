@@ -383,15 +383,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: typeOut
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: maxFigSizeOut
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: minFigSizeOut
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1144,15 +1144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: typeOut
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: maxFigSizeOut
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: minFigSizeOut
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9205244626118431832, guid: f1ce29c8d1d31ae4f9b008132c3e30f5, type: 3}
       propertyPath: materials.Array.data[0]
@@ -1186,6 +1186,10 @@ PrefabInstance:
     - target: {fileID: 883553156580706151, guid: b9cd4515c35434a41be772bccbf7746a, type: 3}
       propertyPath: m_Name
       value: Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716442189004832115, guid: b9cd4515c35434a41be772bccbf7746a, type: 3}
+      propertyPath: level
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7716442189004832115, guid: b9cd4515c35434a41be772bccbf7746a, type: 3}
       propertyPath: trashed
