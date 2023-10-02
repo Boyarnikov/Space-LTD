@@ -173,6 +173,18 @@ public class BoardManager : MonoBehaviour
         GenerateConversions();
 
         controller = FindAnyObjectByType<DialogueController>();
+
+        int filled = 0;
+        HashSet<TileType> h2 = new HashSet<TileType>();
+        foreach (var t in _grid.Values)
+            if (t.type != TileType.Free)
+            {
+                filled++;
+                h2.Add(t.type);
+            }
+
+        tasks.filled = filled;
+        tasks.types = h2.Count();
     }
 
     private void Update()
@@ -247,6 +259,8 @@ public class BoardManager : MonoBehaviour
 
             if (is_placable)
             {
+                tasks.turn += 1;
+
                 foreach (var key in f._grid.Keys)
                 {
                     if (_grid.ContainsKey(key + ind) && f._grid[key].type != TileType.Empty)
@@ -269,6 +283,20 @@ public class BoardManager : MonoBehaviour
                     }
                 }
                 firstPlacment = true;
+
+
+                int filled = 0;
+                HashSet<TileType> h = new HashSet<TileType>();
+                foreach (var t in _grid.Values)
+                    if (t.type != TileType.Free)
+                    {
+                        filled++;
+                        h.Add(t.type);
+                    }
+                        
+                tasks.filled = filled;
+                tasks.types = h.Count();
+
 
                 foreach (var r in recepies)
                 {
