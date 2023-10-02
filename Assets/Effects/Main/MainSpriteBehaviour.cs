@@ -14,6 +14,7 @@ public enum AnimationSpriteParameters
 {
     ALPHA = 0,
     MULTIPLY_ALPHA = 1,
+    SUB_COLOR_ALPHA = 2,
 }
 
 public class AnimationSpriteData {
@@ -109,7 +110,7 @@ public class MainSpriteBehaviour : MonoBehaviour
 {
     [SerializeField] AnimationCurve[] curves;
     [SerializeField] SpriteRenderer sprite_renderer;
-    int count_of_parameters = 1;
+    int count_of_parameters = 2;
     public List<AnimationSpriteData> data;
     public void Start()
     {
@@ -125,6 +126,12 @@ public class MainSpriteBehaviour : MonoBehaviour
         AnimationSpriteData data_alpha_mult = new AnimationSpriteData(curves[1]);
         data_alpha_mult.every_step = SetMultAlpha;
         data.Add(data_alpha_mult);
+        if (curves.Length > 2)
+        {
+            AnimationSpriteData data_subcolor_alpha = new AnimationSpriteData(curves[2]);
+            data_subcolor_alpha.every_step = SetSubColorAlpha;
+            data.Add(data_subcolor_alpha);
+        }
     }
     public void Set(AnimationSpriteParameters key, float value) { data[(int)key].Set(value); }
     public void Play(AnimationSpriteParameters key) { data[(int)key].Play(); }
@@ -132,7 +139,7 @@ public class MainSpriteBehaviour : MonoBehaviour
     public void Restart(AnimationSpriteParameters key) { data[(int)key].Restart(); }
 
     public void UpdateData() {
-        for (int i = 0; i < count_of_parameters; i++)
+        for (int i = 0; i < data.Count; i++)
         {
             data[i].PlayStep();
         }
@@ -171,6 +178,19 @@ public class MainSpriteBehaviour : MonoBehaviour
     public float SetMainColor(Color color)
     {
         sprite_renderer.material.SetColor("_MainColor", color);
+        return 0;
+    }
+
+    public float SetSubColor(Color color)
+    {
+        sprite_renderer.material.SetColor("_SubColor", color);
+        return 0;
+    }
+
+    public float SetSubColorAlpha(float alpha)
+    {
+        Debug.Log("SET_COLOT");
+        sprite_renderer.material.SetFloat("_SubColorAlpha", alpha);
         return 0;
     }
 
