@@ -210,13 +210,17 @@ public class DialogueController : MonoBehaviour
             "Congratulations on your first building!",
             "Here you can see how many blueprints are left.",
             "Try to finish all of them.",
-            "Good luck with it!",
+            "I have also provided you with additional missions!",
+            "They are optional, so don't worry if you don't complete them.",
+            "Good luck!",
         };
         Phrase[] phrases = {
             new Phrase(text[0], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
             new Phrase(text[1], new PhraseActorData(Actors.GIRL1, true, -1, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , targets[4].scale)),
             new Phrase(text[2], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(false, targets[4].position , targets[4].scale)),
-            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
+            new Phrase(text[3], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0, 3.2f), targets[3].scale * new Vector3(1, 0.35f, 1))),
+            new Phrase(text[4], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[3].position + new Vector2(0, 3.2f), targets[3].scale * new Vector3(1, 0.35f, 1))),
+            new Phrase(text[5], new PhraseActorData(Actors.GIRL1, true, -2, ActorPosition.LEFT), new PhraseDispellerData(true, targets[4].position , new Vector2(0, 0))),
         };
         return new Dialogue(ref phrases, hook);
     }

@@ -576,8 +576,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: turn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      propertyPath: queueSize
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6449392615196783029, guid: acb10e46a781fba45a612edd11bad666, type: 3}
       propertyPath: maxFigSize
@@ -590,7 +602,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7768413849232482246, guid: acb10e46a781fba45a612edd11bad666, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: acb10e46a781fba45a612edd11bad666, type: 3}
 --- !u!114 &1899345751779118121 stripped
 MonoBehaviour:

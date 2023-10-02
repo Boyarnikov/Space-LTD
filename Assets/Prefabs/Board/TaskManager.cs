@@ -17,6 +17,15 @@ public class TaskManager : MonoBehaviour
     [SerializeField] public int minFigSize;
     [SerializeField] public int maxFigSize;
 
+    [SerializeField] public int level;
+    [SerializeField] public bool endless;
+
+    string taskText = "";
+    public bool task_failed = false;
+    public bool task_done = false;
+
+    TMPro.TextMeshPro taskTextMesh;
+
     [SerializeField] public CounterUI cui;
     [SerializeField] public List<Vector3> positions = new List<Vector3>();
     [SerializeField] public int queueSize = 10;
@@ -25,6 +34,12 @@ public class TaskManager : MonoBehaviour
     [SerializeField] public GameObject frame;
     [SerializeField] DialogueDispellerTarget target;
     [SerializeField] public CounterUI counter;
+
+    public int turn = 0;
+    public int filled = 1;
+    public int types = 0;
+
+    bool startTask = false;
 
     public void PopulateQueue()
     {
@@ -113,9 +128,25 @@ public class TaskManager : MonoBehaviour
             queue[i].idle = queue[i].transform.position;
         }
 
+        if (endless)
+        {
+            for (int i = queue.Count; i < queueSize; i++)
+            {
+                var f = CreateFigure();
+                queue.Add(f);
+            }
+        }
+
         if (cui is not null)
         {
-            cui.UpdateCounter(queue.Count);
+            if (endless)
+            {
+                cui.UpdateCounter(10);
+            }
+            else
+            {
+                cui.UpdateCounter(queue.Count);
+            }
         }
     }
 
@@ -134,11 +165,78 @@ public class TaskManager : MonoBehaviour
         counter.target.Settings(new Vector2(0.25f, 0.25f));
         PopulateQueue();
         UpdateQueue();
+
+        taskTextMesh = GetComponentInChildren<TMPro.TextMeshPro>();
     }
+
+    
+    void CheckTasks()
+    {
+        switch (level)
+        {
+            case (0):
+                task_done = true;
+                if (turn > 30)
+                {
+                    task_failed = true;
+                }
+                break;
+            case (2):
+                if (filled == 19)
+                {
+                    task_done = true;
+                }
+                break;
+            case (3):
+                if (filled == 0)
+                {
+                    task_done = true;
+                }
+                break;
+            case (4):
+                if (types == 6)
+                {
+                    task_done = true;
+                }
+                break;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckTasks();
+        switch (level) 
+        { 
+            case (0):
+                taskText = "Finish in\r\n30 turns\r\nTurn " + turn + "/30";
+                break;
+            case (2):
+                taskText = "Have fully\r\nfilled grid\r\nTiles " + filled + "/19";
+                if (task_done) taskText = "Have fully\r\nfilled grid\r\nDone";
+                break;
+            case (3):
+                taskText = "Have fully\r\nemptied grid\r\nTiles " + filled + "/0";
+                if (task_done) taskText = "Have fully\r\nemptied grid\r\nDone";
+                break;
+            case (4):
+                taskText = "Have all types\r\nof buildings\r\nTypes " + types + "/6";
+                if (task_done) taskText = "Have all types\r\nof buildings\r\nDone";
+                break;
+        }
+
+        if (task_failed)
+        {
+            taskTextMesh.color = new Color(55f/255f, 0, 0);
+        } else if (task_done)
+        {
+            taskTextMesh.color = new Color(0, 55f / 255f, 0);
+        } else
+        {
+            taskTextMesh.color = Color.black;
+        }
+        taskTextMesh.text = taskText;
+    
     }
 }
